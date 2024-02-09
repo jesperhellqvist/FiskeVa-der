@@ -1,23 +1,29 @@
-
-
-function UserPosition() {
-    this.latitude = 0;
-    this.longitude = 0;
-   
-    this.getLocation = function() {
+class UserPosition {
+    constructor() {
+      this.latitude = null;
+      this.longitude = null;
+        this.locationPromise = this.getCurrentPosition();
+    }
+  
+    async getCurrentPosition() {
+      return new Promise((resolve, reject) => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(this.showPosition);
+          navigator.geolocation.getCurrentPosition(
+            position => {
+              this.latitude = position.coords.latitude;
+              this.longitude = position.coords.longitude;
+              resolve({ latitude: this.latitude, longitude: this.longitude });
+            },
+            error => {
+              reject(error);
+            }
+          );
         } else {
-            alert("Geolocation is not supported by this browser.");
+          reject(new Error('Geolocation is not supported by this browser.'));
         }
+      });
     }
-
-    this.showPosition = function(position) {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-
-        console.log("Latitude: " + this.latitude + " Longitude: " + this.longitude);
-    }
-
-    this.getLocation();
-}
+  }
+  
+  
+  
