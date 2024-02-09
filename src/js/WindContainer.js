@@ -10,7 +10,7 @@ class WindContainer {
         this.windImg = document.createElement('img');
         this.windContainerDiv.appendChild(this.windImg);
         this.windImg.id = 'wind-img';
-        this.windImg.src = '../src/js/img/windDir.png';
+        this.windImg.src = '../src/js/img/windDir1.png';
         
     }
     

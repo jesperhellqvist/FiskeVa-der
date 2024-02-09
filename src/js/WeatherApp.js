@@ -13,6 +13,7 @@ class WeatherApp {
         var userPosition = new UserPosition();
         userPosition.locationPromise.then(() => {
             this.getWeather(userPosition.latitude, userPosition.longitude);
+            this.getCity(userPosition.latitude, userPosition.longitude);
         }).catch(error => {
             console.log(error);
         });
@@ -37,6 +38,17 @@ class WeatherApp {
         this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
         
         
+        });
+
+    }
+
+    getCity(lat, lon) {
+        
+        var city = new City(lat, lon);
+        city.fetchCity().then(() => {
+            this.weatherContainer.updateCity(city.city);
+        }).catch(error => {
+            console.log(error);
         });
     }
 

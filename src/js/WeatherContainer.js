@@ -13,9 +13,15 @@ class WeatherContainer {
     }
 
     update(temp, wind, windDirection) {
+        console.log( temp, wind, windDirection);
         this.tempContainer.update(temp);
      this.windContainer.update(wind, windDirection);
-        // this.userPosition.update(weather);
+     
+    }
+
+    updateCity(city) {
+        console.log(city);
+        this.userPosition.update(city);
     }
 
   
