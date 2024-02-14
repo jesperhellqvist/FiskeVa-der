@@ -11,7 +11,7 @@ class TempContainer {
   }
 
   update(temp) {
-    this.pElement.innerHTML = temp + '°C';
+    this.pElement.innerHTML = temp + '°';
   }
  
 }

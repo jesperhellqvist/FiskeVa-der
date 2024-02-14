@@ -10,5 +10,9 @@ class BarometerContainer {
        
     }
 
+    update(hPa) {
+        this.barometer.update(hPa);
+    }
+
   
 }

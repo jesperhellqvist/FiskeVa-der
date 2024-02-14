@@ -36,6 +36,7 @@ class WeatherApp {
         const correntTime = weatherData.current.time;
         
         this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
+        this.barometerContainer.update(correntPressure);
         
         
         });

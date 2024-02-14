@@ -14,7 +14,7 @@
     justify-content: center;
     flex-wrap: wrap;
     background-color: #ffffff6b;
-    width: 300px;
+    width: 375px;
     height: 250px;
     margin: 20px;
     border-radius: 10px;
@@ -22,12 +22,8 @@
 }
 
 #barometer-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffffff6b;
-    width: 300px;
+    background: url(../img/barometer.png) no-repeat center center;
+    width: 375px;
     height: 200px;
     margin: 20px;
     border-radius: 10px;
@@ -40,7 +36,7 @@
     justify-content: center;
     align-items: center;
     background-color: #ffffff6b;
-    width: 300px;
+    width: 375px;
     height: 200px;
     margin: 20px;
     border-radius: 10px;
@@ -49,13 +45,25 @@
 }
 
 #barometer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 20px;
-    background-color: #fff;
-    width: 290px;
-    height: 180px;
+    background-color: #e66666dc;
+    width: 75px;
+    height: 40px;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+    top: 43%;
+    left: 53%;
 
+}
+
+#barpointer{
+    position: relative;
+    top: -35%;
+    left: 49%;
 }
 
 #temp-container {
