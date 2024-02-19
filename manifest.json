@@ -5,11 +5,11 @@
         "description": "En fiskeapp",
         "start_url": "index.html",
         "display": "standalone",
-        "background_color": "#ffffff",
-        "theme_color": "#007bff",
+        "background_color": "#fff",
+        "theme_color": "#fff",
         "icons": [
           {
-            "src": "/src/js/img/icon_fiske.png",
+            "src": "/src/img/icon_fiske.png",
             "sizes": "192x192",
             "type": "image/png"
           }
