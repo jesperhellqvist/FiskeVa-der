@@ -5,7 +5,6 @@
         "description": "En fiskeapp",
         "start_url": "index.html",
         "display": "standalone",
-        "viewport-fit": "cover",
         "background_color": "#fff",
         "theme_color": "#fff",
         "icons": [
