@@ -24,7 +24,7 @@
 #barometer-container {
     background: url(../img/barometer.png) no-repeat center center;
     width: 375px;
-    height: 200px;
+    height: 210px;
     margin: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
@@ -49,21 +49,22 @@
     justify-content: center;
     align-items: center;
     margin: 20px;
-    background-color: #e66666dc;
-    width: 75px;
-    height: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    background-color: #e6666600;
+    width: 90px;
+    height: 30px;
     position: relative;
-    top: 43%;
-    left: 53%;
+    top: 73%;
+    left: 50%;
 
 }
 
 #barpointer{
     position: relative;
-    top: -35%;
-    left: 49%;
+    top: -28%;
+    left: 50%;
+    
+    transform-origin: bottom;
+    transform: translateX(-50%) rotate(-45deg);
 }
 
 #temp-container {
