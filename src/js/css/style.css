@@ -260,7 +260,7 @@ body {
     }
 
     50% {
-        transform: translateX(20%);
+        transform: translateX(100px);
     }
 
     100% {
