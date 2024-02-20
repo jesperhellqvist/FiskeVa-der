@@ -80,7 +80,7 @@ body {
 
 #barpointer {
     position: relative;
-    top: -2%;
+    top: -5%;
     left: 50%;
     transform-origin: bottom;
     transform: translateX(-50%) rotate(-45deg);
