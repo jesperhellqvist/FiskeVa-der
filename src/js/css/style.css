@@ -41,7 +41,7 @@ body {
 }
 
 #barometer-container {
-    background: url(../img/barometer.png) no-repeat center center;
+    /* background: url(../img/barometer.png) no-repeat center center; */
     width: 100%;
     height: auto;
     margin: 20px;
