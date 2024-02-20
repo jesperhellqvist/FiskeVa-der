@@ -249,7 +249,7 @@ body {
     top: 10%;
     left: 0;
 
-    animation: cloud 10s ease-in-out infinite;
+    animation: cloud 10s linear infinite;
 }
 
 
