@@ -9,7 +9,7 @@
         "theme_color": "#fff",
         "icons": [
           {
-            "src": "/src/img/icon_fiske.png",
+            "src": "/src/js/img/icon_fiske.png",
             "sizes": "192x192",
             "type": "image/png"
           }

@@ -7,7 +7,23 @@ class FishAnimationContainer {
     this.fishAnimationContainer.id = 'fish-animation-container';
     this.fishImg = document.createElement('img');
     this.fishImg.src = '../src/js/img/abborre.png';
+    //this.fishImg.id = 'fish';
+
     this.fishImg.id = 'fish';
     this.fishAnimationContainer.appendChild(this.fishImg);
+  }
+
+
+  setFishId(hPa){
+
+    console.log(hPa);
+
+    if(hPa < 1000){
+      this.fishImg.id = 'fish';
+    }
+    else{
+      this.fishImg.id = 'fishActive';
+    }
+
   }
 }

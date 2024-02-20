@@ -37,6 +37,7 @@ class WeatherApp {
         
         this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
         this.barometerContainer.update(correntPressure);
+        this.fishAnimationContainer.setFishId(correntPressure);
         
         
         });
