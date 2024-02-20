@@ -29,7 +29,7 @@ class WeatherContainer {
 
     setBackGround(weatherCode){
         console.log(weatherCode);
-        weatherCode = 1;
+        weatherCode = 2;
        switch(weatherCode){
         
            case 0:
@@ -38,9 +38,10 @@ class WeatherContainer {
            case 1:
                this.weatherImg.src = './src/js/weather/cloud.png';
                break;
-        //    case 2:
-        //        this.weatherContainer.style.backgroundImage = "url('./src/js/img/clouds.jpg')";
-        //        break;
+           case 2:
+            this.weatherImg.src =  './src/js/weather/rain.png';
+            this.weatherAppContainer.style.backgroundColor = "#e0dfdf";
+               break;
         //    case 3:
         //        this.weatherContainer.style.backgroundImage = "url('./src/js/img/brokenclouds.jpg')";
         //        break;
