@@ -80,10 +80,17 @@ body {
 
 #barpointer {
     position: relative;
-    top: 0;
+    top: -2%;
     left: 50%;
     transform-origin: bottom;
     transform: translateX(-50%) rotate(-45deg);
+}
+
+#barometer-container-background{
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    
 }
 
 #temp-container {
