@@ -16,9 +16,7 @@ class FishAnimationContainer {
 
   setFishId(hPa){
 
-    console.log(hPa);
-
-    if(hPa < 1000){
+    if(hPa < 1010){
       this.fishImg.id = 'fish';
     }
     else{

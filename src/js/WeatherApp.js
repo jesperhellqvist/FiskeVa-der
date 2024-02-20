@@ -28,7 +28,7 @@ class WeatherApp {
         console.log(weatherData);
         const correntTemp = weatherData.current.temperature_2m;
         const correntWind = weatherData.current.wind_speed_10m;
-        const correntPressure = weatherData.current.surface_pressure;
+        const correntPressure = weatherData.current.pressure_msl;
         const correntWeather = weatherData.current.weather_code;
         const correntPrecipitation = weatherData.current.precipitation;
         const correntWindDirection = weatherData.current.wind_direction_10m;
@@ -38,6 +38,7 @@ class WeatherApp {
         this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
         this.barometerContainer.update(correntPressure);
         this.fishAnimationContainer.setFishId(correntPressure);
+        this.weatherContainer.setBackGround(correntWeather);
         
         
         });

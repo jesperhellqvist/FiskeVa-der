@@ -36,8 +36,6 @@ body {
     width: 90%;
     height: auto;
     margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 #barometer-container {
@@ -45,8 +43,6 @@ body {
     width: 100%;
     height: auto;
     margin: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
 #fish-animation-container {
@@ -73,7 +69,7 @@ body {
     width: 90px;
     height: 30px;
     position: relative;
-    top: 68%;
+    top: 80%;
     left: 50%;
 
 }
@@ -88,7 +84,7 @@ body {
 }
 
 #barometer-container-background{
-    background-color: #fff;
+    background-color: #1471a0;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     
@@ -100,7 +96,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 20px;
-    background-color: #fff;
+    z-index: 1;
     width: 100px;
     height: 100px;
     border-radius: 10px;
@@ -110,7 +106,7 @@ body {
 
 #temp {
     color: rgb(0, 0, 0, 0.8);
-    font-size: 20px;
+    font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -120,7 +116,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 20px;
-    background-color: #fff;
+    z-index: 1;
     width: 100px;
     height: 100px;
     border-radius: 10px;
@@ -145,7 +141,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 20px;
-    background-color: #fff;
+    z-index: 1;
     width: 200px;
     height: 50px;
     border-radius: 10px;
@@ -154,7 +150,7 @@ body {
 
 #user-city {
     color: rgb(0, 0, 0, 0.8);
-    font-size: 20px;
+    font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
 }
@@ -244,18 +240,30 @@ body {
 
 }
 
-    /* 25% {
-        transform: translateY(-100px) translateX(50px) rotate3d(0, 1, 0, 20deg);
+  
+
+/* Path: src/js/css/weather-icons.css */
+
+.weather-img{
+    position:absolute;
+    top: 10%;
+    left: 0;
+
+    animation: cloud 10s ease-in-out infinite;
+}
+
+
+
+@keyframes cloud {
+    0% {
+        transform: translateX(0);
     }
 
     50% {
-        transform: translateY(-200px) translateX(0px) rotate3d(0, 0, 1, -30deg);
-    }
-
-    75% {
-        transform: translateY(-100px) translateX(10px) rotate3d(0, 1, 0, 20deg);
+        transform: translateX(20%);
     }
 
     100% {
-        transform: translateY(-100px) translateX(0px) rotate3d(0, 1, 0, 40deg);
-    } */
+        transform: translateX(0);
+    }
+}
