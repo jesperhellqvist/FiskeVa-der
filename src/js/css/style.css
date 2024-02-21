@@ -33,35 +33,35 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-   
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    width: 100vw;
-    height: auto;
-    margin-top: 20px;
-    
+    width: 100%;
 }
 
 #barometer-container {
-    width: 100vw;
-    height: 270px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     
     
-   
 }
 
 #fish-animation-container {
     position: relative;
-    top: 6.6%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   background: url(../img/sjo.png) no-repeat;
+    
     width: 100%;
-    height: 100vh;
-    border-radius: 10px 10px 0 0;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    /* Dölj innehållet som går utanför containern */
+    height: 100%;
+   
+
+}
+
+#fish-animation-container-background{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+   
+
 }
 
 #barometer {
@@ -69,29 +69,31 @@ body {
     justify-content: center;
     align-items: center;
     margin: 20px;
-    background-color: #e6666600;
+    color: #58595b;
     width: 90px;
     height: 30px;
-    position: relative;
-    top: 80%;
-    left: 50%;
+    position: absolute;
+    top: 45%;
+    left: 35.5%;
+    z-index: 2;
 
 }
 
 #barpointer {
-    position: relative;
-    top: 0;
+    position: absolute;
+    top: 32%;
     left: 50%;
-    margin-bottom: 5px;
+    height: 13%;
+    z-index: 2;
     transform-origin: bottom;
     transform: translateX(-50%) rotate(-45deg);
 }
 
-#barometer-container-background{
-    background-color: #1471a0;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    
+#barometer-container-background {
+    position: relative;
+    width: 100%;
+ 
+
 }
 
 #temp-container {
@@ -148,9 +150,9 @@ body {
     z-index: 1;
     width: 200px;
     height: 50px;
-    
-   
-    
+
+
+
 }
 
 #user-city {
@@ -166,7 +168,8 @@ body {
     bottom: 0;
     left: 0;
     width: 30%;
-    
+    z-index: 1;
+
     /* Startposition */
     animation: bottom-swim 6s linear infinite;
 
@@ -178,14 +181,15 @@ body {
 #fishActive {
     position: absolute;
     /* Lägg till absolut position på fisken */
-    
+    top: 35%;
     left: 0;
     width: 30%;
-    
+    z-index: 1;
+
     /* Startposition */
     animation: top-swim 4s linear infinite;
 
-    
+
 }
 
 
@@ -208,83 +212,63 @@ body {
 
 @keyframes top-swim {
     0% {
-        transform:  translateX(20px) rotate3d(0, 1, 0, 30deg);
+        transform: translateX(20px) rotate3d(0, 1, 0, 30deg);
     }
 
     10% {
-        transform:  translateX(40px) rotate3d(0, 1, 0, -20deg);
+        transform: translateX(40px) rotate3d(0, 1, 0, -20deg);
     }
 
     25% {
-        transform:  translateX(80px) translateY(-30px) rotate3d(0, 1, 1, -20deg);
+        transform: translateX(80px) translateY(-30px) rotate3d(0, 1, 1, -20deg);
     }
 
     35% {
-        transform:  translateX(160px) translateY(-30px) rotate3d(0, 1, 1, 20deg);
+        transform: translateX(160px) translateY(-30px) rotate3d(0, 1, 1, 20deg);
     }
 
     50% {
-        transform:  translateX(300px) rotate3d(0, 1, 0, 180deg);
+        transform: translateX(300px) rotate3d(0, 1, 0, 180deg);
     }
 
     65% {
-        transform:  translateX(160px) rotate3d(0, 1, 0, 160deg);
+        transform: translateX(160px) rotate3d(0, 1, 0, 160deg);
     }
 
     75% {
-        transform:  translateX(80px) rotate3d(0, 1, 0, 180deg);
+        transform: translateX(80px) rotate3d(0, 1, 0, 180deg);
     }
 
     85% {
-        transform:  translateX(40px) rotate3d(0, 1, 0, 160deg);
+        transform: translateX(40px) rotate3d(0, 1, 0, 160deg);
     }
 
     100% {
-        transform:  translateX(10px) rotate3d(0, 1, 0, 20deg);
+        transform: translateX(10px) rotate3d(0, 1, 0, 20deg);
     }
 
 }
 
-  
+
 
 /* Path: src/js/css/weather-icons.css */
 
-.weather-img{
-    position:absolute;
-    top: 10%;
+.weather-img {
+    position: absolute;
+    top: 0;
     left: 0;
 
     animation: cloud 10s linear infinite;
 }
 
 
-  
-  
-  
-  @keyframes fall {
-    from {
-      transform: translateY(-100px) rotate(0); /* Startposition och rotation */
-    }
-    to {
-      transform: translateY(100vh) rotate(0); /* Slutposition och rotation */
-    }
-  }
-  
-  
-  
 
 
 
-@keyframes cloud {
-    0% {
-        transform: translateX(0);
-    }
 
-    50% {
-        transform: translateX(100px);
-    }
 
-    100% {
-        transform: translateX(0);
-    }
-}
+
+
+
+
+

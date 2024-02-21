@@ -39,7 +39,7 @@ class WeatherContainer {
                this.weatherImg.src = './src/js/weather/cloud.png';
                break;
            case 2:
-            this.weatherImg.src =  './src/js/weather/rain.png';
+            this.weatherImg.src =  './src/js/weather/regn.gif';
             this.weatherAppContainer.style.backgroundColor = "#e0dfdf";
                break;
         //    case 3:

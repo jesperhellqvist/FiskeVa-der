@@ -20,7 +20,7 @@ class Barometer {
 
         hPa = Math.floor(hPa);
         
-        this.pElement.innerHTML = hPa + ' hPa';
+        this.pElement.innerHTML = "Barometer " + hPa + ' hPa';
         var deg = ((hPa - 961) / (1060 - 961)) * 180 - 90;
 
         this.img.style.transform = 'translateX(-50%) rotate(' + deg + 'deg)';
