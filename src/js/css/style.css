@@ -47,10 +47,10 @@ body {
 }
 
 #fish-animation-container {
-    position: absolute;
+    position: relative;
     
     width: 100%;
-   top: 62%;
+    height: 100%;
    
 
 }
