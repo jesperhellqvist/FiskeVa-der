@@ -29,20 +29,26 @@ class WeatherContainer {
 
     setBackGround(weatherCode) {
         console.log(weatherCode);
-        weatherCode = 63;
+       
+       
         switch (weatherCode) {
 
             case 0:
-                this.weatherContainer.style.background = "url('./src/js/weather/clearSky_0.png')";
+                this.weatherImg.src = './src/js/weather/clearSky.png';
                 break;
+
             case 1:
-                this.weatherImg.src = './src/js/weather/cloud.png';
+            case 2:
+                this.weatherImg.src = './src/js/weather/mainlyClear.png';
+                break;
+            case 3:
+                this.weatherImg.src = './src/js/weather/overcast.png';
                 break;
 
             case 53:
             case 63:
             case 81:
-                this.weatherImg.src = './src/js/weather/moderaterain.gif';
+                this.weatherImg.src = './src/js/weather/lightrain.gif';
 
                 break;
             case 55:
@@ -50,23 +56,9 @@ class WeatherContainer {
             case 82:
                 this.weatherImg.src = './src/js/weather/heavyrain.gif';
                 break;
-            //    case 4:
-            //        this.weatherContainer.style.backgroundImage = "url('./src/js/img/shower.jpg')";
-            //        break;
-            //    case 5:
-            //        this.weatherContainer.style.backgroundImage = "url('./src/js/img/rain.jpg')";
-            //        break;
-            //    case 6:
-            //        this.weatherContainer.style.backgroundImage = "url('./src/js/img/thunderstorm.jpg')";
-            //        break;
-            //    case 7:
-            //        this.weatherContainer.style.backgroundImage = "url('./src/js/img/snow.jpg')";
-            //        break;
-            //    case 8:
-            //        this.weatherContainer.style.backgroundImage = "url('./src/js/img/mist.jpg')";
-            //        break;
             default:
-                this.weatherContainer.style.backgroundImage = "url('./src/js/weather/clearSky_0.png')";
+                this.weatherImg.src = './src/js/weather/mainlyClear.png';
+                break;
         }
     }
 
