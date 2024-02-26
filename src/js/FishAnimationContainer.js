@@ -10,7 +10,7 @@ class FishAnimationContainer {
     this.fishImg.id = 'fish';
     this.fishAnimationContainer.appendChild(this.fishImg);
     this.background = document.createElement('img');
-    this.background.src = './src/js/img/sjo2.png';
+    this.background.src = './src/js/img/sjo3.png';
     this.background.id = 'fish-animation-container-background';
     this.fishAnimationContainer.appendChild(this.background);
   }

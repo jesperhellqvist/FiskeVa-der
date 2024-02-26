@@ -1,7 +1,7 @@
 
     {
         "name": "Fiskeväder",
-        "short_name": "Fiskeväder App",
+        "short_name": "Fiskeväder",
         "description": "En fiskeapp",
         "start_url": "index.html",
         "display": "standalone",
