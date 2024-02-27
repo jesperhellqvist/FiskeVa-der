@@ -1,7 +1,7 @@
 
 class WeatherApp {
     constructor() {
-        this.weatherAppContainer = document.getElementById('weather-app');
+        this.weatherAppContainer = document.getElementById('current-weather');
         this.weatherContainer = new WeatherContainer(this.weatherAppContainer);
         this.barometerContainer = new BarometerContainer(this.weatherAppContainer);
         this.fishAnimationContainer = new FishAnimationContainer(this.weatherAppContainer);

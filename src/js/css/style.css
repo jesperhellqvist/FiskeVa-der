@@ -61,16 +61,15 @@ a:hover {
 
 
 
+/* ---------Current weather ----------- */
 
-#weather-app {
+
+#current-weather {
     display: flex;
     flex-direction: column;
-
     align-items: center;
     height: 100vh;
     width: 100vw;
-
-  
 }
 
 #weather-container {
@@ -96,25 +95,16 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-    
-    
 }
 
 #fish-animation-container {
     position: absolute;
     bottom: 6%;
-
     left: 0;
-    
     width: 100%;
-   
-   
-
 }
 
 #fish-animation-container-background{
-   
     width: 100%;
     height: 100%;
 }
@@ -125,12 +115,10 @@ a:hover {
     align-items: center;
     margin: 20px;
     color: #58595b;
-    
     position: absolute;
     top: 45%;
     left: 36%;
     z-index: 2;
-
 }
 
 #barpointer {
@@ -147,8 +135,6 @@ a:hover {
     position: absolute;
     top: 30%;
     width: 90%;
- 
-
 }
 
 #temp-container {
@@ -162,8 +148,6 @@ a:hover {
     height: 100px;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
-    
-
 }
 
 #temp {
@@ -194,7 +178,6 @@ a:hover {
 
 #wind-img {
     display: none;
-
 }
 
 #user-position {
@@ -202,13 +185,9 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-   
     z-index: 1;
     width: 200px;
     height: 50px;
-
-
-
 }
 
 #user-city {
@@ -220,35 +199,21 @@ a:hover {
 
 #fish {
     position: absolute;
-    /* Lägg till absolut position på fisken */
     bottom: 0;
     left: 0;
     width: 30%;
     z-index: 1;
-
-    /* Startposition */
     animation: bottom-swim 6s linear infinite;
-
-    /* Använd keyframes för att skapa en animation */
-
-
 }
 
 #fishActive {
     position: absolute;
-    /* Lägg till absolut position på fisken */
     top: 35%;
     left: 0;
     width: 30%;
     z-index: 1;
-
-    /* Startposition */
     animation: top-swim 4s linear infinite;
-
-
 }
-
-
 
 
 @keyframes bottom-swim {
@@ -305,10 +270,6 @@ a:hover {
 
 }
 
-
-
-/* Path: src/js/css/weather-icons.css */
-
 .weather-img {
     position: absolute;
     top: 0;
@@ -319,6 +280,28 @@ a:hover {
 }
 
 
+/* ---------Hourly ----------- */
+
+#hourly-weather {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+
+/* ---------Forecast ----------- */
+
+
+#forecast-weather {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
 
 
 

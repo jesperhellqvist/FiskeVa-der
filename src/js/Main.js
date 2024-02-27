@@ -3,15 +3,33 @@ var Main = {
 
     init: function () {
         var weatherApp = new WeatherApp();
+        Main.handleNavigation();
+        
+    },
 
-        // var userPosition = new UserPosition();
-        // userPosition.locationPromise.then(() => {
-        //     var weatherApp = new WeatherApp(userPosition.lat, userPosition.lon);
-        // }).catch(error => {
-        //     console.log(error);
-        // });
+    handleNavigation: function () {
+      var navUl = document.getElementsByTagName('nav')[0];
+        navUl.addEventListener('click', Main.handleNavClick);
+    },
 
-    }
+    handleNavClick: function (event) {
+        var target = event.target;
+        if (target.tagName === 'A') {
+            event.preventDefault();
+
+            var divs = document.getElementsByClassName('thisPage');
+            for (var i = 0; i < divs.length; i++) {
+               divs[i].style.display = 'none';
+            }
+
+            var id = target.getAttribute('href').slice(1);
+            var section = document.getElementById(id);
+            section.style.display = 'flex';
+
+        
+          
+        }
+    },
 
 }
 
