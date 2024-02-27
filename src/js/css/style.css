@@ -14,6 +14,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     max-height: 100vh;
     max-width: 100vw;
+    overflow: hidden;
    
 }
 
@@ -21,9 +22,13 @@ nav {
     background-color: #3498db; /* Blå färg, kan anpassas efter din design */
     padding: 10px 0;
     width: 100%;
+    height: 40px;
     position: fixed;
     bottom: 0;
     z-index: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 
 }
 
@@ -33,7 +38,8 @@ ul {
     padding: 0;
     display: flex;
     flex-direction: row;
-    justify-content: center; /* Centrerar länkarna horisontellt */
+    justify-content: center;
+    align-items: center;
 }
 
 li {
@@ -76,6 +82,14 @@ a:hover {
     width: 100%;
 }
 
+.weather-description{
+    z-index: 3;
+    position: absolute;
+    top: 23%;
+    left: 37%;
+    color: #58595b;
+}
+
 #barometer-container {
     width: 100%;
     display: flex;
@@ -84,11 +98,12 @@ a:hover {
     align-items: center;
     
     
+    
 }
 
 #fish-animation-container {
     position: absolute;
-    bottom: 4%;
+    bottom: 6%;
 
     left: 0;
     
@@ -112,7 +127,7 @@ a:hover {
     color: #58595b;
     
     position: absolute;
-    top: 47%;
+    top: 42%;
     left: 36%;
     z-index: 2;
 
@@ -120,17 +135,17 @@ a:hover {
 
 #barpointer {
     position: absolute;
-    top: 35%;
+    top: 29.5%;
     left: 50%;
     height: 13%;
-    z-index: 2;
+    z-index: 5;
     transform-origin: bottom;
     transform: translateX(-50%) rotate(-45deg);
 }
 
 #barometer-container-background {
     position: absolute;
-    top: 30%;
+    top: 28%;
     width: 100%;
  
 
@@ -187,7 +202,7 @@ a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20px;
+   
     z-index: 1;
     width: 200px;
     height: 50px;

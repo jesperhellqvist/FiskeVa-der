@@ -9,6 +9,9 @@ class WeatherContainer {
         this.tempContainer = new TempContainer(this.weatherContainer);
         this.windContainer = new WindContainer(this.weatherContainer);
         this.userPosition = new UserPositionContainer(this.weatherContainer);
+        this.weatherDescription = document.createElement('p');
+        this.weatherDescription.className = 'weather-description';
+        this.weatherContainer.appendChild(this.weatherDescription);
         this.weatherImg = document.createElement('img');
         this.weatherImg.className = 'weather-img';
         this.weatherContainer.appendChild(this.weatherImg);
@@ -35,17 +38,25 @@ class WeatherContainer {
 
             case 0:
                 this.weatherImg.src = './src/js/weather/clearSky.png';
+                this.weatherDescription.textContent = 'Clear Sky';
                 break;
 
             case 1:
+                this.weatherImg.src = './src/js/weather/mainlyClear.png';
+                this.weatherDescription.textContent = 'Few Clouds';
+                break;
             case 2:
                 this.weatherImg.src = './src/js/weather/mainlyClear.png';
+                this.weatherDescription.textContent = 'Scattered Clouds';
                 break;
             case 3:
                 this.weatherImg.src = './src/js/weather/overcast.png';
+                this.weatherDescription.textContent = 'Broken Clouds';
                 break;
 
             case 53:
+                this.weatherImg.src = './src/js/weather/lightrain.gif';
+                this.weatherDescription.textContent = 'Light Rain';
             case 63:
             case 81:
                 this.weatherImg.src = './src/js/weather/lightrain.gif';
