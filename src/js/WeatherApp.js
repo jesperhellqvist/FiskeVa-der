@@ -22,9 +22,9 @@ class WeatherApp {
     getWeather(lat, lon) {
         console.log(lat, lon);
         var weather = new Weather(lat, lon);
-        weather.fetchWeather().then(() => {
+        weather.fetchCurrentWeather().then(() => {
         
-        const weatherData = weather.weather;
+        const weatherData = weather.currentWeather;
         console.log(weatherData);
         const correntTemp = weatherData.current.temperature_2m;
         const correntWind = weatherData.current.wind_speed_10m;
