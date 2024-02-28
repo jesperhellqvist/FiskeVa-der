@@ -1,8 +1,8 @@
 
 
 class WeatherContainer {
-    constructor() {
-        this.weatherAppContainer = document.getElementById('current-weather');
+    constructor(weatherAppContainer) {
+        this.weatherAppContainer = weatherAppContainer;
         this.weatherContainer = document.createElement('div');
         this.weatherAppContainer.appendChild(this.weatherContainer);
         this.weatherContainer.id = 'weather-container';
