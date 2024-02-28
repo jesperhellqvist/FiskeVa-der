@@ -71,7 +71,11 @@ class WeatherContainer {
                 this.weatherImg.src = './src/js/weather/mainlyClear.png';
                 break;
         }
+
+        return this.weatherImg.src;
     }
+
+    
 
 
 }

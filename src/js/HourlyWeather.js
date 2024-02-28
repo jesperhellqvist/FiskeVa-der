@@ -10,7 +10,7 @@ class HourlyWeather {
 
 
     pastHours() {
-        
+
         var date = new Date();
         var hours = date.getHours();
         return hours;
@@ -21,7 +21,7 @@ class HourlyWeather {
         if (weatherData === undefined) {
             return;
         }
-
+        console.log(weatherData);
         var remainingHours = this.pastHours();
 
         var temp = weatherData.temperature_2m;
@@ -29,15 +29,18 @@ class HourlyWeather {
 
         var timeArray = [];
         var h = new Date().getHours();
-        for (var i = 0; i < (24 -remainingHours); i++) {
+        for (var i = 0; i < (24 - remainingHours); i++) {
             timeArray.push((h + i) % 24 + ':00');
         }
-        
+
         var hpa = weatherData.pressure_msl;
         hpa = hpa.slice(remainingHours);
 
         var windSpeed = weatherData.wind_speed_10m;
         windSpeed = windSpeed.slice(remainingHours);
+
+        var weatherCode = weatherData.weather_code;
+        weatherCode = weatherCode.slice(remainingHours);
 
 
         for (var i = 0; i < (24 - remainingHours); i++) {
@@ -51,7 +54,8 @@ class HourlyWeather {
             hourWeather.appendChild(timeElem);
 
             var weatherIcon = document.createElement('img');
-            weatherIcon.src = 'https://www.weatherbit.io/static/img/icons/c02d.png';
+            var code = weatherCode[i];
+            weatherIcon.src = this.setWeatherIcon(code);
             weatherIcon.className = 'weather-icon';
             hourWeather.appendChild(weatherIcon);
 
@@ -71,6 +75,31 @@ class HourlyWeather {
             wind.innerHTML = windSpeed[i] + ' m/s';
             hourWeather.appendChild(wind);
         }
+    }
+
+
+    setWeatherIcon(weatherCode) {
+
+
+        switch (weatherCode) {
+            case 0:
+                return '../src/js/icons/clearsky.png';
+            case 1:
+                return '../src/js/icons/cloudy.png';
+            case 2:
+                return '../src/js/icons/moastlyclear.png';
+            case 3:
+                return '../src/js/icons/partlyclouded.png';
+            case 4:
+                return '../src/js/icons/rain.png';
+            case 5:
+                return '../src/js/icons/rainandsnow.png';
+            case 6:
+                return '../src/js/icons/thunderstorm.png';
+            default:
+                return '../src/js/icons/clearsky.png';
+        }
+
     }
 
 }
