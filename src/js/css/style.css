@@ -27,7 +27,8 @@ nav {
     bottom: 0;
     z-index: 1;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
 
 }
@@ -38,12 +39,17 @@ ul {
     padding: 0;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    width: 100%;
 }
 
 li {
-    margin-right: 20px; /* Justera avståndet mellan länkarna */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
 }
 
 a {
@@ -58,8 +64,6 @@ a {
 a:hover {
     background-color: #2980b9; /* Ändra bakgrundsfärgen när användaren hovrar över länken */
 }
-
-
 
 /* ---------Current weather ----------- */
 
@@ -317,25 +321,3 @@ a:hover {
     height: 50px;
     
 }
-
-
-/* ---------Forecast ----------- */
-
-
-#forecast-weather {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
-
-
-
-
-
-
-
-
-
-
