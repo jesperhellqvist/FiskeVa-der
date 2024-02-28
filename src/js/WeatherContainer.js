@@ -12,8 +12,8 @@ class WeatherContainer {
         this.weatherDescription = document.createElement('p');
         this.weatherDescription.className = 'weather-description';
         this.weatherContainer.appendChild(this.weatherDescription);
-        this.weatherImg = document.createElement('img');
-        this.weatherImg.className = 'weather-img';
+            this.weatherImg = document.createElement('img');
+            this.weatherImg.className = 'weather-img';
         this.weatherContainer.appendChild(this.weatherImg);
 
     }
@@ -79,3 +79,5 @@ class WeatherContainer {
 
 
 }
+
+

@@ -1,10 +1,14 @@
 
 
-class HourlyWeather {
+class HourlyWeather{
     constructor(weatherAppContainer) {
         this.hourlyWeather = document.createElement('div');
         weatherAppContainer.appendChild(this.hourlyWeather);
         this.hourlyWeather.id = 'hourly-weather-container';
+        this.weatherImg = document.createElement('img');
+        this.weatherImg.className = 'weather-img';
+        this.hourlyWeather.appendChild(this.weatherImg);
+
         this.createHourlyWeather();
     }
 
@@ -75,6 +79,9 @@ class HourlyWeather {
             wind.innerHTML = windSpeed[i] + ' m/s';
             hourWeather.appendChild(wind);
         }
+
+        this.setBackGround(weatherCode[0]);
+
     }
 
 
@@ -85,21 +92,59 @@ class HourlyWeather {
             case 0:
                 return '../src/js/icons/clearsky.png';
             case 1:
-                return '../src/js/icons/cloudy.png';
-            case 2:
                 return '../src/js/icons/moastlyclear.png';
-            case 3:
+            case 2:
                 return '../src/js/icons/partlyclouded.png';
-            case 4:
+            case 3:
+                return '../src/js/icons/cloudy.png';
+            case 53:
+            case 63:
+            case 81:
+            case 55:
+            case 65:
+            case 82:
                 return '../src/js/icons/rain.png';
-            case 5:
+            case 66:
+            case 67:
                 return '../src/js/icons/rainandsnow.png';
-            case 6:
+            case 95:
+            case 96:
+            case 99:
                 return '../src/js/icons/thunderstorm.png';
             default:
                 return '../src/js/icons/clearsky.png';
         }
 
+    }
+
+    setBackGround(weatherCode) {
+        console.log(weatherCode);
+        switch (weatherCode) {
+            case 0:
+                this.weatherImg.src = '../src/js/weather/clearSky.png';
+                break;
+            case 1:
+                this.weatherImg.src = '../src/js/weather/mainlyClear.png';
+                break;
+            case 2:
+                this.weatherImg.src = '../src/js/weather/mainlyClear.png';
+                break;
+            case 3:
+                this.weatherImg.src = '../src/js/weather/overcast.png';
+                break;
+            case 53:
+            case 63:
+            case 81:
+                this.weatherImg.src = '../src/js/weather/lightrain.gif';
+                break;
+            case 55:
+            case 65:
+            case 82:
+                this.weatherImg.src = '../src/js/weather/heavyrain.gif';
+                break;
+            default:
+                this.weatherImg.src = '../src/js/weather/mainlyClear.png';
+        }
     }
 
 }
