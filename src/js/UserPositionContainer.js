@@ -20,10 +20,15 @@ class UserPositionContainer {
         var municipality = place.address.municipality;
         var hamlet = place.address.hamlet;
         var village = place.address.village;
+        var town = place.address.town;
  console.log(city, country, municipality, hamlet);    
 
         if (city) {
             this.pElement.innerHTML = city;
+            return;
+        }
+        else if (town) {
+            this.pElement.innerHTML = town;
             return;
         }
         else if (village) {
@@ -41,6 +46,9 @@ class UserPositionContainer {
         else if (country) {
             this.pElement.innerHTML = country;
             return;
+        }
+        else {
+            this.pElement.innerHTML = 'Rymden';
         }
 
     }

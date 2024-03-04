@@ -2,8 +2,8 @@
 
 class City {
     constructor(lat, lon) {
-        this.lat = lat;
-        this.lon = lon;
+        this.lat = 	56.55272981;
+        this.lon = 14.13893197;
         this.url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" + this.lat + "&lon=" + this.lon;
         this.city = {};
     }
