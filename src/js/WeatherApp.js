@@ -4,6 +4,7 @@ class WeatherApp {
         this.currentWeatherContainer = document.getElementById('current-weather');
         this.hourlyWeatherContainer = document.getElementById('hourly-weather');
         this.forecastWeatherContainer = document.getElementById('forecast-weather');
+        this.loadingSreen = document.getElementById('loadingScreen');
 
 
 
@@ -29,6 +30,10 @@ class WeatherApp {
         console.log(lat, lon);
         var weather = new Weather(lat, lon);
         weather.fetchCurrentWeather().then(() => {
+            this.loadingSreen.style.display = 'none';
+            this.currentWeatherContainer.style.display = 'flex';
+
+
 
             const hourlyWeather = weather.currentWeather.hourly;
             const weatherData = weather.currentWeather;
