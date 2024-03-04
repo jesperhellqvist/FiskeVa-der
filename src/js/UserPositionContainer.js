@@ -13,7 +13,22 @@ class UserPositionContainer {
     }
 
     update(city) {
-        this.pElement.innerHTML = city.address.city;
+        
+     console.log(city);
+    
+
+        if (city.address.city === undefined) {
+            this.pElement.style.fontSize = '1.5em';
+            this.pElement.innerHTML = city.address.municipality;
+        }
+        if (city.address.municipality === undefined) {
+            this.pElement.style.fontSize = '1.5em';
+            this.pElement.innerHTML = city.address.country;
+        }
+        else {
+            this.pElement.innerHTML = city.address.city;
+        }
+       
     }
 
 

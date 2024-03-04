@@ -56,15 +56,6 @@ class WeatherApp {
 
     }
 
-    // getHourlyWeather(lat, lon) {
-    //     var weather = new Weather(lat, lon);
-    //     weather.fetchHourlyWeather().then(() => {
-    //         const weatherData = weather.hourlyWeather;
-    //         this.hourlyWeather.update(weatherData);
-    //     }).catch(error => {
-    //         console.log(error);
-    //     });
-    // }
 
     getCity(lat, lon) {
 

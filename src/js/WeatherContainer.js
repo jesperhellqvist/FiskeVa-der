@@ -26,7 +26,6 @@ class WeatherContainer {
     }
 
     updateCity(city) {
-        console.log(city);
         this.userPosition.update(city);
     }
 
