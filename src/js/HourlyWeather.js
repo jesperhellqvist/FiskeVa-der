@@ -1,17 +1,23 @@
 
 
-class HourlyWeather{
+class HourlyWeather {
     constructor(weatherAppContainer) {
         this.hourlyWeather = document.createElement('div');
-        weatherAppContainer.appendChild(this.hourlyWeather);
         this.hourlyWeather.id = 'hourly-weather-container';
+        weatherAppContainer.appendChild(this.hourlyWeather);
+
+
         this.weatherImg = document.createElement('img');
         this.weatherImg.className = 'weather-img';
         this.hourlyWeather.appendChild(this.weatherImg);
+
+
         this.headerDiv = document.createElement('div');
         this.headerDiv.className = 'header-div';
         this.hourlyWeather.appendChild(this.headerDiv);
-        this.headerDiv.innerHTML = '<p class="time-header">Time</p><p class="weather-header">Weather</p><p class="temp-header">Temp C°</p><p class="hPa-header">Pressure hPa</p><p class="wind-header">m/s</p>';
+        this.headerDiv.innerHTML = '<p class="time-header">Time</p><p class="weather-header">Weather</p><p class="temp-header">C°</p><p class="hPa-header">hPa</p><p class="wind-header">m/s</p> <p class="wind-header">&#129517</p>';
+
+
         this.hourlyWeatherContainer = document.createElement('div');
         this.hourlyWeatherContainer.className = 'hour-weather-container';
         this.hourlyWeather.appendChild(this.hourlyWeatherContainer);
@@ -20,49 +26,41 @@ class HourlyWeather{
     }
 
 
-    pastHours() {
-
-        var date = new Date();
-        var hours = date.getHours();
-        return hours;
-
-    }
-
     createHourlyWeather(weatherData) {
         if (weatherData === undefined) {
             return;
         }
         console.log(weatherData);
-        var remainingHours = this.pastHours();
+
 
         var temp = weatherData.temperature_2m;
-        temp = temp.slice(remainingHours);
 
-        var timeArray = [];
-        var h = new Date().getHours();
-        for (var i = 0; i < (24 - remainingHours); i++) {
-            timeArray.push((h + i) % 24 + ':00');
-        }
 
         var hpa = weatherData.pressure_msl;
-        hpa = hpa.slice(remainingHours);
+
 
         var windSpeed = weatherData.wind_speed_10m;
-        windSpeed = windSpeed.slice(remainingHours);
+
+        var windDirection = weatherData.wind_direction_10m;
+        console.log(windDirection);
+
 
         var weatherCode = weatherData.weather_code;
-        weatherCode = weatherCode.slice(remainingHours);
 
 
-        for (var i = 0; i < (24 - remainingHours); i++) {
+
+        for (var i = 0; i < 24; i++) {
             var hourWeather = document.createElement('div');
             hourWeather.className = 'hour-weather';
             this.hourlyWeatherContainer.appendChild(hourWeather);
 
+
             var timeElem = document.createElement('p');
             timeElem.className = 'time';
-            timeElem.innerHTML = timeArray[i];
+            var h = new Date().getHours();
+            timeElem.innerHTML = (h + i) % 24 + ':00';
             hourWeather.appendChild(timeElem);
+
 
             var weatherIcon = document.createElement('img');
             var code = weatherCode[i];
@@ -70,30 +68,43 @@ class HourlyWeather{
             weatherIcon.className = 'weather-icon';
             hourWeather.appendChild(weatherIcon);
 
+
             var tempElem = document.createElement('p');
             var temp = weatherData.temperature_2m[i];
             tempElem.className = 'temp';
             tempElem.innerHTML = temp + '°';
             hourWeather.appendChild(tempElem);
 
+
             var hPa = document.createElement('p');
             hPa.className = 'hPa';
-            hPa.innerHTML = hpa[i] + ' hPa';
+            if (hpa[i] >= hpa[i - 1]) {
+                hPa.innerHTML = hpa[i] + ' ↑';
+            }
+            else {
+                hPa.innerHTML = hpa[i] + ' ↓';
+            }
             hourWeather.appendChild(hPa);
+
 
             var wind = document.createElement('p');
             wind.className = 'wind';
-            wind.innerHTML = windSpeed[i] + ' m/s';
+            wind.innerHTML = windSpeed[i];
             hourWeather.appendChild(wind);
+
+            var windImg = document.createElement('img');
+            windImg.className = 'wind-img';
+            windImg.src = '../src/js/img/windDir1.png';
+            windImg.style.width = '10px';
+            windImg.style.transform = 'rotate(' + windDirection[i] + 'deg)';
+            hourWeather.appendChild(windImg);
         }
 
         this.setBackGround(weatherCode[0]);
-
     }
 
 
     setWeatherIcon(weatherCode) {
-
 
         switch (weatherCode) {
             case 0:
@@ -121,8 +132,8 @@ class HourlyWeather{
             default:
                 return '../src/js/icons/clearsky.png';
         }
-
     }
+
 
     setBackGround(weatherCode) {
         console.log(weatherCode);
