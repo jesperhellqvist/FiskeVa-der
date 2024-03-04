@@ -9,8 +9,8 @@
         "theme_color": "#fff",
         "icons": [
           {
-            "src": "/src/js/img/icon_fiske.png",
-            "sizes": "192x192",
+            "src": "/src/js/img/FishWeather_icon.png",
+            "sizes": "193x193",
             "type": "image/png"
           }
         ]
