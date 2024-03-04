@@ -8,6 +8,13 @@ class HourlyWeather{
         this.weatherImg = document.createElement('img');
         this.weatherImg.className = 'weather-img';
         this.hourlyWeather.appendChild(this.weatherImg);
+        this.headerDiv = document.createElement('div');
+        this.headerDiv.className = 'header-div';
+        this.hourlyWeather.appendChild(this.headerDiv);
+        this.headerDiv.innerHTML = '<p class="time-header">Time</p><p class="weather-header">Weather</p><p class="temp-header">Temp C°</p><p class="hPa-header">Pressure hPa</p><p class="wind-header">m/s</p>';
+        this.hourlyWeatherContainer = document.createElement('div');
+        this.hourlyWeatherContainer.className = 'hour-weather-container';
+        this.hourlyWeather.appendChild(this.hourlyWeatherContainer);
 
         this.createHourlyWeather();
     }
@@ -50,7 +57,7 @@ class HourlyWeather{
         for (var i = 0; i < (24 - remainingHours); i++) {
             var hourWeather = document.createElement('div');
             hourWeather.className = 'hour-weather';
-            this.hourlyWeather.appendChild(hourWeather);
+            this.hourlyWeatherContainer.appendChild(hourWeather);
 
             var timeElem = document.createElement('p');
             timeElem.className = 'time';
