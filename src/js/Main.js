@@ -4,6 +4,7 @@ var Main = {
     init: function () {
         var weatherApp = new WeatherApp();
         Main.handleNavigation();
+        Main.registerServiceWorker();
         
     },
 
