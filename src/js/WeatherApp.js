@@ -42,8 +42,7 @@ class WeatherApp {
             const correntPressure = weatherData.current.pressure_msl;
             const correntWeather = weatherData.current.weather_code;
             const correntWindDirection = weatherData.current.wind_direction_10m;
-            const correntIsDay = weatherData.current.is_day;
-            const correntTime = weatherData.current.time;
+           
 
             this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
             this.barometerContainer.update(correntPressure);

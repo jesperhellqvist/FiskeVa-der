@@ -14,14 +14,12 @@ class UserPositionContainer {
 
     update(place) {
 
-       console.log(place);
         var city = place.address.city;
         var country = place.address.country;
         var municipality = place.address.municipality;
         var hamlet = place.address.hamlet;
         var village = place.address.village;
-        var town = place.address.town;
- console.log(city, country, municipality, hamlet);    
+        var town = place.address.town;  
 
         if (city) {
             this.pElement.innerHTML = city;
@@ -40,6 +38,7 @@ class UserPositionContainer {
             return;
         }
         else if (municipality) {
+            this.pElement.style.fontSize = '1.5em';
             this.pElement.innerHTML = municipality;
             return;
         }
