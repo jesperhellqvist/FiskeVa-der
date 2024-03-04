@@ -99,13 +99,6 @@ a:hover {
     top: 60%;
 }
 
-#barometer-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 #fish-animation-container {
     position: absolute;
@@ -116,16 +109,29 @@ a:hover {
 
 #fish-animation-container-background {
     width: 100%;
+    height: 200px;
     max-height: 300px;
 }
 
+#barometer-container {
+    width: 100%;
+   height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 5%;
+    z-index: 1;
+    margin-top: 20px;
+}
 
 
 #barometer-container-background {
-    position: relative;
-    top: 30%;
-    max-width: 100%;
-    z-index: 1;
+    position: absolute;
+    top: 0;
+    max-width: 90%;
+    z-index: 2;
 }
 #barometer {
     display: flex;
@@ -134,17 +140,16 @@ a:hover {
     margin: 20px;
     color: #58595b;
     position: absolute;
-    top: 52%;
-    left: 38%;
-    z-index: 5;
+    top: 40%;
+    z-index: 3;
 }
 
 #barpointer {
     position: absolute;
-    top: 40%;
+    top: 10%;
     left: 50%;
-    height: 13%;
-    z-index: 5;
+    width: 8.5px;
+    z-index: 99;
     transform-origin: bottom;
     transform: translateX(-50%) rotate(-45deg);
 }
@@ -217,7 +222,7 @@ a:hover {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 30%;
+    width: 100px;
     z-index: 1;
     animation: bottom-swim 6s linear infinite;
 }
@@ -226,7 +231,7 @@ a:hover {
     position: absolute;
     top: 35%;
     left: 0;
-    width: 30%;
+    width: 100px;
     z-index: 1;
     animation: top-swim 4s linear infinite;
 }
