@@ -18,6 +18,7 @@ class City {
                 })
                 .catch(error => {
                     reject(error);
+                    
                 });
         });
     }

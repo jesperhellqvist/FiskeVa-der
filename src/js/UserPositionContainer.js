@@ -8,30 +8,40 @@ class UserPositionContainer {
         this.pElement = document.createElement('p');
         this.userPositionDiv.appendChild(this.pElement);
         this.pElement.id = 'user-city';
-       
-      
+
+
     }
 
-    update(city) {
-        
-     console.log(city);
-    
+    update(place) {
 
-        if (city.address.city === undefined) {
-            this.pElement.style.fontSize = '1.5em';
-            this.pElement.innerHTML = city.address.municipality;
-        }
-        if (city.address.municipality === undefined) {
-            this.pElement.style.fontSize = '1.5em';
-            this.pElement.innerHTML = city.address.country;
-        }
-        else {
-            this.pElement.innerHTML = city.address.city;
-        }
        
+        var city = place.address.city;
+        var country = place.address.country;
+        var municipality = place.address.municipality;
+        var hamlet = place.address.hamlet;
+ console.log(city, country, municipality, hamlet);    
+
+        if (city) {
+            this.pElement.innerHTML = city;
+            return;
+        }
+        else if (hamlet) {
+            this.pElement.style.fontSize = '1.5em';
+            this.pElement.innerHTML = hamlet;
+            return;
+        }
+        else if (municipality) {
+            this.pElement.innerHTML = municipality;
+            return;
+        }
+        else if (country) {
+            this.pElement.innerHTML = country;
+            return;
+        }
+
     }
 
 
 
- 
+
 }
