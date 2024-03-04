@@ -14,19 +14,23 @@ class UserPositionContainer {
 
     update(place) {
 
-       
+       console.log(place);
         var city = place.address.city;
         var country = place.address.country;
         var municipality = place.address.municipality;
         var hamlet = place.address.hamlet;
+        var village = place.address.village;
  console.log(city, country, municipality, hamlet);    
 
         if (city) {
             this.pElement.innerHTML = city;
             return;
         }
+        else if (village) {
+            this.pElement.innerHTML = village;
+            return;
+        }
         else if (hamlet) {
-            this.pElement.style.fontSize = '1.5em';
             this.pElement.innerHTML = hamlet;
             return;
         }
