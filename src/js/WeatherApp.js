@@ -34,7 +34,7 @@ class WeatherApp {
         weather.fetchCurrentWeather().then(() => {
             this.loadingSreen.style.display = 'none';
             this.errorScreen.style.display = 'none';
-           // this.currentWeatherContainer.style.display = 'flex';
+            this.currentWeatherContainer.style.display = 'flex';
 
 
 
