@@ -3,8 +3,9 @@ class WeatherApp {
     constructor() {
         this.currentWeatherContainer = document.getElementById('current-weather');
         this.hourlyWeatherContainer = document.getElementById('hourly-weather');
-        this.forecastWeatherContainer = document.getElementById('forecast-weather');
         this.loadingSreen = document.getElementById('loadingScreen');
+        this.noLocationScreen = document.getElementById('noLocationScreen');
+        this.errorScreen = document.getElementById('errorScreen');
 
 
 
@@ -18,10 +19,11 @@ class WeatherApp {
     getUserPosition() {
         var userPosition = new UserPosition();
         userPosition.locationPromise.then(() => {
+            this.noLocationScreen.style.display = 'none';
             this.getWeather(userPosition.latitude, userPosition.longitude);
             this.getCity(userPosition.latitude, userPosition.longitude);
-            //this.getHourlyWeather(userPosition.latitude, userPosition.longitude);
         }).catch(error => {
+            this.noLocationScreen.style.display = 'flex';
             console.log(error);
         });
     }
@@ -31,6 +33,7 @@ class WeatherApp {
         var weather = new Weather(lat, lon);
         weather.fetchCurrentWeather().then(() => {
             this.loadingSreen.style.display = 'none';
+            this.errorScreen.style.display = 'none';
             this.currentWeatherContainer.style.display = 'flex';
 
 
@@ -42,7 +45,7 @@ class WeatherApp {
             const correntPressure = weatherData.current.pressure_msl;
             const correntWeather = weatherData.current.weather_code;
             const correntWindDirection = weatherData.current.wind_direction_10m;
-           
+
 
             this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
             this.barometerContainer.update(correntPressure);
@@ -51,6 +54,9 @@ class WeatherApp {
             this.hourlyWeather.createHourlyWeather(hourlyWeather);
 
 
+        }).catch(error => {
+            this.errorScreen.style.display = 'flex';
+            console.log(error);
         });
 
     }

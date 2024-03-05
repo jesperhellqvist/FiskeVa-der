@@ -4,12 +4,12 @@ class UserPositionContainer {
     constructor(weatherContainer) {
         this.userPositionDiv = document.createElement('div');
         this.pElement = document.createElement('p');
-
+    
         this.addElements(weatherContainer);
     }
 
     addElements(weatherContainer) {
-        this.userPositionDiv.id = 'user-position';
+    this.userPositionDiv.id = 'user-position';
         weatherContainer.appendChild(this.userPositionDiv);
         this.pElement.id = 'user-city';
         this.userPositionDiv.appendChild(this.pElement);
@@ -22,7 +22,7 @@ class UserPositionContainer {
         var municipality = place.address.municipality;
         var hamlet = place.address.hamlet;
         var village = place.address.village;
-        var town = place.address.town;  
+        var town = place.address.town;
 
         if (city) {
             this.pElement.innerHTML = city;

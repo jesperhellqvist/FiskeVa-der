@@ -23,7 +23,5 @@ class WindContainer {
         this.pElement.innerHTML = wind + 'm/s ';
         this.windImg.style.display = 'block';
         this.windImg.style.transform = 'rotate(' + windDirection + 'deg)';
-
-        
     }
 }
