@@ -2,20 +2,23 @@
 
 class WeatherContainer {
     constructor(weatherAppContainer) {
-        this.weatherAppContainer = weatherAppContainer;
         this.weatherContainer = document.createElement('div');
-        this.weatherAppContainer.appendChild(this.weatherContainer);
-        this.weatherContainer.id = 'weather-container';
         this.tempContainer = new TempContainer(this.weatherContainer);
         this.windContainer = new WindContainer(this.weatherContainer);
         this.userPosition = new UserPositionContainer(this.weatherContainer);
         this.weatherDescription = document.createElement('p');
+        this.weatherImg = document.createElement('img');
+
+        this.addElements(weatherAppContainer);
+    }
+
+    addElements(weatherAppContainer) {
+        this.weatherContainer.id = 'weather-container';
+        weatherAppContainer.appendChild(this.weatherContainer);
         this.weatherDescription.className = 'weather-description';
         this.weatherContainer.appendChild(this.weatherDescription);
-        this.weatherImg = document.createElement('img');
         this.weatherImg.className = 'weather-img';
         this.weatherContainer.appendChild(this.weatherImg);
-
     }
 
     update(temp, wind, windDirection) {

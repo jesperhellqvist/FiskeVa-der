@@ -3,13 +3,16 @@
 class UserPositionContainer {
     constructor(weatherContainer) {
         this.userPositionDiv = document.createElement('div');
+        this.pElement = document.createElement('p');
+
+        this.addElements(weatherContainer);
+    }
+
+    addElements(weatherContainer) {
         this.userPositionDiv.id = 'user-position';
         weatherContainer.appendChild(this.userPositionDiv);
-        this.pElement = document.createElement('p');
-        this.userPositionDiv.appendChild(this.pElement);
         this.pElement.id = 'user-city';
-
-
+        this.userPositionDiv.appendChild(this.pElement);
     }
 
     update(place) {

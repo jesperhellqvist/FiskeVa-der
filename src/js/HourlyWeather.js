@@ -3,26 +3,25 @@
 class HourlyWeather {
     constructor(weatherAppContainer) {
         this.hourlyWeather = document.createElement('div');
+        this.weatherImg = document.createElement('img');
+        this.headerDiv = document.createElement('div');
+        this.hourlyWeatherContainer = document.createElement('div');
+
+        this.addElements(weatherAppContainer);
+        this.createHourlyWeather();
+    }
+
+
+    addElements(weatherAppContainer) {
         this.hourlyWeather.id = 'hourly-weather-container';
         weatherAppContainer.appendChild(this.hourlyWeather);
-
-
-        this.weatherImg = document.createElement('img');
         this.weatherImg.className = 'weather-img';
         this.hourlyWeather.appendChild(this.weatherImg);
-
-
-        this.headerDiv = document.createElement('div');
         this.headerDiv.className = 'header-div';
         this.hourlyWeather.appendChild(this.headerDiv);
         this.headerDiv.innerHTML = '<p class="time-header">Time</p><p class="weather-header">Weather</p><p class="temp-header">C°</p><p class="hPa-header">hPa</p><p class="wind-header">m/s</p> <p class="wind-header">&#129517</p>';
-
-
-        this.hourlyWeatherContainer = document.createElement('div');
         this.hourlyWeatherContainer.className = 'hour-weather-container';
         this.hourlyWeather.appendChild(this.hourlyWeatherContainer);
-
-        this.createHourlyWeather();
     }
 
 

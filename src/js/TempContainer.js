@@ -3,11 +3,17 @@
 class TempContainer {
   constructor(weatherContainer) {
     this.tempContainerDiv = document.createElement('div');
-    weatherContainer.appendChild(this.tempContainerDiv);
-    this.tempContainerDiv.id = 'temp-container';
     this.pElement = document.createElement('p');
-    this.tempContainerDiv.appendChild(this.pElement);
+
+    this.addElements(weatherContainer);
+  
+  }
+
+  addElements(weatherContainer) {
+    this.tempContainerDiv.id = 'temp-container';
+    weatherContainer.appendChild(this.tempContainerDiv);
     this.pElement.id = 'temp';
+    this.tempContainerDiv.appendChild(this.pElement);
   }
 
   update(temp) {
