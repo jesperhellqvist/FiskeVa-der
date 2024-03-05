@@ -177,6 +177,15 @@ class HourlyWeather {
             case 82:
                 this.weatherImg.src = '../src/js/weather/heavyrain.gif';
                 break;
+            case 71:
+            case 73:
+            case 75:
+            case 77:
+            case 85:
+            case 86:
+                this.weatherImg.src = '../src/js/weather/snow.gif';
+                break;
+
             default:
                 this.weatherImg.src = '../src/js/weather/mainlyClear.png';
         }

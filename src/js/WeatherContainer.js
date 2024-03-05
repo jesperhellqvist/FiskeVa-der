@@ -12,8 +12,8 @@ class WeatherContainer {
         this.weatherDescription = document.createElement('p');
         this.weatherDescription.className = 'weather-description';
         this.weatherContainer.appendChild(this.weatherDescription);
-            this.weatherImg = document.createElement('img');
-            this.weatherImg.className = 'weather-img';
+        this.weatherImg = document.createElement('img');
+        this.weatherImg.className = 'weather-img';
         this.weatherContainer.appendChild(this.weatherImg);
 
     }
@@ -31,8 +31,8 @@ class WeatherContainer {
 
     setBackGround(weatherCode) {
         console.log(weatherCode);
-       
-       
+
+
         switch (weatherCode) {
 
             case 0:
@@ -65,16 +65,28 @@ class WeatherContainer {
             case 65:
             case 82:
                 this.weatherImg.src = './src/js/weather/heavyrain.gif';
+                this.weatherDescription.textContent = 'Heavy Rain';
+                break;
+
+            case 71:
+            case 73:
+            case 75:
+            case 77:
+            case 85:
+            case 86:
+                this.weatherImg.src = './src/js/weather/snow.gif';
+                this.weatherDescription.textContent = 'Snow';
                 break;
             default:
                 this.weatherImg.src = './src/js/weather/mainlyClear.png';
+                this.weatherDescription.textContent = 'Clear Sky';
                 break;
         }
 
         return this.weatherImg.src;
     }
 
-    
+
 
 
 }
