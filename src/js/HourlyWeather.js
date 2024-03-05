@@ -108,29 +108,46 @@ class HourlyWeather {
 
         switch (weatherCode) {
             case 0:
-                return '../src/js/icons/clearsky.png';
+                return '../src/js/icons/sol.png';
             case 1:
-                return '../src/js/icons/moastlyclear.png';
+                return '../src/js/icons/nastanKlart.png';
             case 2:
-                return '../src/js/icons/partlyclouded.png';
+                return '../src/js/icons/halvklart.png';
             case 3:
-                return '../src/js/icons/cloudy.png';
+                return '../src/js/icons/molnigt.png';
+            case 45:
+            case 48:
+                return '../src/js/icons/dimma.png';
+            case 51:
             case 53:
-            case 63:
-            case 81:
             case 55:
+            case 61:
+            case 80:
+                return '../src/js/icons/lattregn.png';
+            case 63:
+            case 80:
+            case 81:
+                return '../src/js/icons/mellanregn.png';
             case 65:
             case 82:
-                return '../src/js/icons/rain.png';
+                return '../src/js/icons/mycketregn.png';
+            case 57:
             case 66:
             case 67:
-                return '../src/js/icons/rainandsnow.png';
+                return '../src/js/icons/regnosno.png';
+            case 71:
+            case 73:
+            case 75:
+            case 77:
+            case 85:
+            case 86:
+                return '../src/js/icons/sno.png';
             case 95:
             case 96:
             case 99:
-                return '../src/js/icons/thunderstorm.png';
+                return '../src/js/icons/oska.png';
             default:
-                return '../src/js/icons/clearsky.png';
+                return '../src/js/icons/sol.png';
         }
     }
 
