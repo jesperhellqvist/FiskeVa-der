@@ -60,7 +60,8 @@ class WeatherApp {
                 this.loadingSreen.style.display = 'none';
                 console.log(error);
             }
-
+            this.loadingSreen.style.display = 'none';
+            this.currentWeatherContainer.style.display = 'flex';
         });
 
     }
