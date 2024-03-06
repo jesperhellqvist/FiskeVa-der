@@ -54,7 +54,7 @@ class HourlyWeather {
             this.hourlyWeatherContainer.appendChild(hourWeather);
 
 
-            var timeElem = document.createElement('p');
+            var timeElem = document.createElement('p'); 
             timeElem.className = 'time';
             var h = new Date().getHours();
             timeElem.innerHTML = (h + i) % 24 + ':00';
