@@ -7,12 +7,12 @@ const urlsToCache = [
     '/index.html',
     '/manifest.json',
     '/service-worker.js',
-    '../src/js/Main.js',
     '../src/js/css/style.css',
     '../src/js/WeatherApp.js',
     '../src/js/Weather.js',
     '../src/js/UserPosition.js',
     '../src/js/City.js',
+    '../src/js/Barometer.js',
     '../src/js/WeatherContainer.js',
     '../src/js/TempContainer.js',
     '../src/js/WindContainer.js',
@@ -22,7 +22,8 @@ const urlsToCache = [
     '../src/js/FishAnimationContainer.js',
     '../src/js/img/barometer2.png',
     '../src/js/img/sjo3.png',
-    '../src/js/img/windDir1.png'
+    '../src/js/img/windDir1.png',
+    '../src/js/Main.js'
 ];
 
 self.addEventListener('install', event => {
