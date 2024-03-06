@@ -62,6 +62,10 @@ class WeatherApp {
             }
             this.loadingSreen.style.display = 'none';
             this.currentWeatherContainer.style.display = 'flex';
+
+            setTimeout(() => {
+                alert('No internet connection');
+            }, 5000);
         });
 
     }
