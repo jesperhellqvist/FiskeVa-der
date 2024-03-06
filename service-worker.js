@@ -21,7 +21,23 @@ const urlsToCache = [
     '../src/js/img/barometer2.png',
     '../src/js/img/sjo3.png',
     '../src/js/img/windDir1.png',
-    '../src/js/Main.js'
+    '../src/js/Main.js',
+    '../src/js/weather/clearSky.png',
+    '../src/js/weather/heavyrain.gif',
+    '../src/js/weather/lightrain.gif',
+    '../src/js/weather/mainlyClear.png',
+    '../src/js/weather/overcast.png',
+    '../src/js/weather/snow.gif',
+    '../src/js/icons/dimma.png',
+    '../src/js/icons/halvklart.png',
+    '../src/js/icons/lattregn.png',
+    '../src/js/icons/mellanregn.png',
+    '../src/js/icons/mycketregn.png',
+    '../src/js/icons/oska.png',
+    '../src/js/icons/regnosno.png',
+    '../src/js/icons/sno.png',
+    '../src/js/icons/sol.png',
+    '../src/js/icons/nastanKlart.png'
 ];
 
 self.addEventListener('install', event => {

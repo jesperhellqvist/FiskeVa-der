@@ -43,10 +43,6 @@ var Main = {
             .catch(error => {
                 console.error('Service Worker registration failed:', error);
             });
-            // window.addEventListener('load', () => {
-            //     console.log('steg 3');
-               
-            // });
         }
     }
 

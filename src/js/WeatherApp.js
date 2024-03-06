@@ -66,7 +66,6 @@ class WeatherApp {
 
             setTimeout(() => {
                 alert('No internet connection');
-                this.errorScreen.style.display = 'flex';
             }, 5000);
         });
 
