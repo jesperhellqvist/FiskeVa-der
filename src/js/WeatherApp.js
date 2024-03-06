@@ -55,9 +55,12 @@ class WeatherApp {
 
 
         }).catch(error => {
-            this.errorScreen.style.display = 'flex';
-            this.loadingSreen.style.display = 'none';
-            console.log(error);
+            if (navigator.onLine) {
+                this.errorScreen.style.display = 'flex';
+                this.loadingSreen.style.display = 'none';
+                console.log(error);
+            }
+
         });
 
     }
