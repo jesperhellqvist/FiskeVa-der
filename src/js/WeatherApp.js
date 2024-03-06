@@ -60,11 +60,13 @@ class WeatherApp {
                 this.loadingSreen.style.display = 'none';
                 console.log(error);
             }
+            this.errorScreen.style.display = 'none';
             this.loadingSreen.style.display = 'none';
             this.currentWeatherContainer.style.display = 'flex';
 
             setTimeout(() => {
                 alert('No internet connection');
+                this.errorScreen.style.display = 'flex';
             }, 5000);
         });
 
