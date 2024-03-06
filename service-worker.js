@@ -73,13 +73,15 @@ self.addEventListener('fetch', event => {
                             return response;
                         }
 
-                        // Clone the response because it's a stream
-                        let responseToCache = response.clone();
+                        if (event.request.url.startsWith('http://api.open-meteo.com')) {
+                            // Clone the response because it's a stream
+                            let responseToCache = response.clone();
 
-                        caches.open(CACHE_NAME)
-                            .then(cache => {
-                                cache.put(event.request, responseToCache);
-                            });
+                            caches.open(CACHE_NAME)
+                                .then(cache => {
+                                    cache.put(event.request, responseToCache);
+                                });
+                        }
 
                         return response;
                     });
