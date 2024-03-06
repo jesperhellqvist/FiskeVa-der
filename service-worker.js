@@ -63,24 +63,23 @@ self.addEventListener('fetch', event => {
                     return response;
                 }
 
-                // No cache hit, make network request
-                return fetch(event.request)
+                // Clone the request because it's a stream
+                let fetchRequest = event.request.clone();
+
+                return fetch(fetchRequest)
                     .then(response => {
                         // Check if we received a valid response
                         if (!response || response.status !== 200 || response.type !== 'basic') {
                             return response;
                         }
 
-                        // If the request is for the API, cache the response
-                        if (event.request.url.startsWith('https://api.open-meteo.com')) {
-                            // Clone the response because it's a stream
-                            let responseToCache = response.clone();
+                        // Clone the response because it's a stream
+                        let responseToCache = response.clone();
 
-                            caches.open(CACHE_NAME)
-                                .then(cache => {
-                                    cache.put(event.request, responseToCache);
-                                });
-                        }
+                        caches.open(CACHE_NAME)
+                            .then(cache => {
+                                cache.put(event.request, responseToCache);
+                            });
 
                         return response;
                     });
