@@ -13,11 +13,21 @@ class Weather {
 
     fetchCurrentWeather() {
         return new Promise((resolve, reject) => {
-            fetch(this.url_currentWeather)
-                .then(response => response.json())
+            // Try to get the weather data from the cache
+            caches.match(this.url_currentWeather)
+                .then(response => {
+                    if (response) {
+                        // Cache hit - return the cached response
+                        return response.json();
+                    } else {
+                        // Cache miss - fetch from the network
+                        return fetch(this.url_currentWeather)
+                            .then(response => response.json());
+                    }
+                })
                 .then(data => {
                     this.currentWeather = data;
-                    resolve(); 
+                    resolve();
                 })
                 .catch(error => {
                     reject(error);
