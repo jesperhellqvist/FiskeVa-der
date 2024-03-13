@@ -19,6 +19,7 @@ const urlsToCache = [
     '../src/js/HourlyWeather.js',
     '../src/js/BarometerContainer.js',
     '../src/js/FishAnimationContainer.js',
+    '../src/js/img/barpointer.png',
     '../src/js/img/barometer2.png',
     '../src/js/img/sjo3.png',
     '../src/js/img/windDir1.png',
@@ -38,10 +39,7 @@ const urlsToCache = [
     '../src/js/icons/regnosno.png',
     '../src/js/icons/sno.png',
     '../src/js/icons/sol.png',
-    '../src/js/icons/nastanKlart.png',
-
-
-
+    '../src/js/icons/nastanKlart.png'
 ];
 
 self.addEventListener('install', event => {
@@ -73,6 +71,10 @@ self.addEventListener('fetch', event => {
                     });
 
                 return response;
+            })
+            .catch(() => {
+                // Network request failed, try to get it from the cache
+                return caches.match(event.request);
             })
     );
 });

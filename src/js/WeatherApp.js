@@ -52,22 +52,36 @@ class WeatherApp {
             this.fishAnimationContainer.setFishId(correntPressure);
             this.weatherContainer.setBackGround(correntWeather);
             this.hourlyWeather.createHourlyWeather(hourlyWeather);
-
+            localStorage.setItem('cachedWeatherData', JSON.stringify(weather.currentWeather));
 
         }).catch(error => {
+            this.loadingSreen.style.display = 'none';
+            this.currentWeatherContainer.style.display = 'flex';
+            
             if (navigator.onLine) {
                 this.errorScreen.style.display = 'flex';
-                this.loadingSreen.style.display = 'none';
+                
                 console.log(error);
             }
             else {
-                this.errorScreen.style.display = 'none';
-                this.loadingSreen.style.display = 'none';
-                this.currentWeatherContainer.style.display = 'flex';
-
-                setTimeout(() => {
-                    alert('Du saknar internetuppkoppling');
-                }, 2000);
+                // Check if we have cached data
+                let cachedWeatherData = localStorage.getItem('cachedWeatherData');
+                if (cachedWeatherData) {
+                    cachedWeatherData = JSON.parse(cachedWeatherData);
+                    const hourlyWeather = cachedWeatherData.hourly;
+                    const weatherData = cachedWeatherData;
+                    const correntTemp = weatherData.current.temperature_2m;
+                    const correntWind = weatherData.current.wind_speed_10m;
+                    const correntPressure = weatherData.current.pressure_msl;
+                    const correntWeather = weatherData.current.weather_code;
+                    const correntWindDirection = weatherData.current.wind_direction_10m;
+        
+                    this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
+                    this.barometerContainer.update(correntPressure);
+                    this.fishAnimationContainer.setFishId(correntPressure);
+                    this.weatherContainer.setBackGround(correntWeather);
+                    this.hourlyWeather.createHourlyWeather(hourlyWeather);
+                }
             }
         });
 
