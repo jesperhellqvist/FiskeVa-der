@@ -22,12 +22,12 @@ class WeatherApp {
             this.noLocationScreen.style.display = 'none';
             this.getWeather(userPosition.latitude, userPosition.longitude);
             this.getCity(userPosition.latitude, userPosition.longitude);
-            localStorage.setItem('cachedUserPosition', JSON.stringify({ latitude: userPosition.latitude, longitude: userPosition.longitude }));
+            localStorage.setItem('cachedUserPosition', JSON.stringify({ latitude: userPosition.latitude, longitude: userPosition.longitude })); // Sparar användarens position i localstorage
         }).catch(error => {
             this.noLocationScreen.style.display = 'flex';
-            console.log(error);
+           console.log(error); 
             // Check if we have cached data
-            let cachedUserPosition = localStorage.getItem('cachedUserPosition');
+            let cachedUserPosition = localStorage.getItem('cachedUserPosition'); // Hämtar användarens position från localstorage
             if (cachedUserPosition) {
                 cachedUserPosition = JSON.parse(cachedUserPosition);
                 this.getWeather(cachedUserPosition.latitude, cachedUserPosition.longitude);

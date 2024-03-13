@@ -16,8 +16,7 @@ class City {
                     this.city = data;
                     resolve();
                 })
-                .catch(error => {
-                    
+                .catch(error => { 
                     reject(error);
                 });
         });
