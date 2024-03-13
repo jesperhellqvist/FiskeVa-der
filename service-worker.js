@@ -39,7 +39,9 @@ const urlsToCache = [
     '../src/js/icons/regnosno.png',
     '../src/js/icons/sno.png',
     '../src/js/icons/sol.png',
-    '../src/js/icons/nastanKlart.png'
+    '../src/js/icons/nastanKlart.png',
+    '../src/js/icons/molnigt.png',
+
 ];
 
 self.addEventListener('install', event => {

@@ -22,9 +22,17 @@ class WeatherApp {
             this.noLocationScreen.style.display = 'none';
             this.getWeather(userPosition.latitude, userPosition.longitude);
             this.getCity(userPosition.latitude, userPosition.longitude);
+            localStorage.setItem('cachedUserPosition', JSON.stringify({ latitude: userPosition.latitude, longitude: userPosition.longitude }));
         }).catch(error => {
             this.noLocationScreen.style.display = 'flex';
             console.log(error);
+            // Check if we have cached data
+            let cachedUserPosition = localStorage.getItem('cachedUserPosition');
+            if (cachedUserPosition) {
+                cachedUserPosition = JSON.parse(cachedUserPosition);
+                this.getWeather(cachedUserPosition.latitude, cachedUserPosition.longitude);
+                this.getCity(cachedUserPosition.latitude, cachedUserPosition.longitude);
+            }
         });
     }
 
@@ -58,12 +66,6 @@ class WeatherApp {
             this.loadingSreen.style.display = 'none';
             this.currentWeatherContainer.style.display = 'flex';
             
-            if (navigator.onLine) {
-                this.errorScreen.style.display = 'flex';
-                
-                console.log(error);
-            }
-            else {
                 // Check if we have cached data
                 let cachedWeatherData = localStorage.getItem('cachedWeatherData');
                 if (cachedWeatherData) {
@@ -75,14 +77,14 @@ class WeatherApp {
                     const correntPressure = weatherData.current.pressure_msl;
                     const correntWeather = weatherData.current.weather_code;
                     const correntWindDirection = weatherData.current.wind_direction_10m;
-        
+
                     this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
                     this.barometerContainer.update(correntPressure);
                     this.fishAnimationContainer.setFishId(correntPressure);
                     this.weatherContainer.setBackGround(correntWeather);
                     this.hourlyWeather.createHourlyWeather(hourlyWeather);
                 }
-            }
+            
         });
 
     }
@@ -93,8 +95,13 @@ class WeatherApp {
         var city = new City(lat, lon);
         city.fetchCity().then(() => {
             this.weatherContainer.updateCity(city.city);
+            localStorage.setItem('cachedCityData', JSON.stringify(city.city));
         }).catch(error => {
-            console.log(error);
+            let cachedCityData = localStorage.getItem('cachedCityData');
+            if (cachedCityData) {
+                cachedCityData = JSON.parse(cachedCityData);
+                this.weatherContainer.updateCity(cachedCityData);
+            }
         });
     }
 

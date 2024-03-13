@@ -17,6 +17,7 @@ class City {
                     resolve();
                 })
                 .catch(error => {
+                    
                     reject(error);
                 });
         });

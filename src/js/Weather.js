@@ -13,23 +13,17 @@ class Weather {
 
     fetchCurrentWeather() {
         return new Promise((resolve, reject) => {
-            // Try to get the weather data from the cache
-            caches.match(this.url_currentWeather)
-                .then(response => {
-                    if (response) {
-                        // Cache hit - return the cached response
-                        return response.json();
-                    } else {
-                        // Cache miss - fetch from the network
-                        return fetch(this.url_currentWeather)
-                            .then(response => response.json());
-                    }
-                })
+            fetch(this.url_currentWeather)
                 .then(data => {
                     this.currentWeather = data;
                     resolve();
                 })
                 .catch(error => {
+                   setTimeout(() => {
+                       this.fetchCurrentWeather();
+                       alert('Du är inte ansluten till internet');
+                     }, 10000);
+                    
                     reject(error);
                 });
         });
