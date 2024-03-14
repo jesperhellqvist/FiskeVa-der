@@ -22,19 +22,11 @@ class WeatherApp {
             this.noLocationScreen.style.display = 'none';
             this.getWeather(userPosition.latitude, userPosition.longitude);
             this.getCity(userPosition.latitude, userPosition.longitude);
-            localStorage.setItem('cachedUserPosition', JSON.stringify({ latitude: userPosition.latitude, longitude: userPosition.longitude })); // Sparar användarens position i localstorage
+         
         }).catch(error => {
             this.noLocationScreen.style.display = 'flex';
            console.log(error); 
-            // Check if we have cached data
-            let cachedUserPosition = localStorage.getItem('cachedUserPosition'); // Hämtar användarens position från localstorage
-            if (cachedUserPosition) {
-                cachedUserPosition = JSON.parse(cachedUserPosition);
-                this.getWeather(cachedUserPosition.latitude, cachedUserPosition.longitude);
-                this.getCity(cachedUserPosition.latitude, cachedUserPosition.longitude);
-            }
-        });
-    }
+    });
 
     getWeather(lat, lon) {
         console.log(lat, lon);
@@ -43,9 +35,6 @@ class WeatherApp {
             this.loadingSreen.style.display = 'none';
             this.errorScreen.style.display = 'none';
             this.currentWeatherContainer.style.display = 'flex';
-
-
-
             const hourlyWeather = weather.currentWeather.hourly;
             const weatherData = weather.currentWeather;
             console.log(weatherData);
