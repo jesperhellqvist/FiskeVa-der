@@ -22,9 +22,17 @@ class WeatherApp {
             this.noLocationScreen.style.display = 'none';
             this.getWeather(userPosition.latitude, userPosition.longitude);
             this.getCity(userPosition.latitude, userPosition.longitude);
+            localStorage.setItem('cachedUserPosition', JSON.stringify({ latitude: userPosition.latitude, longitude: userPosition.longitude }));
 
         }).catch(error => {
             this.noLocationScreen.style.display = 'flex';
+            // Check if we have cached data
+            let cachedUserPosition = localStorage.getItem('cachedUserPosition');
+            if (cachedUserPosition) {
+                cachedUserPosition = JSON.parse(cachedUserPosition);
+                this.getWeather(cachedUserPosition.latitude, cachedUserPosition.longitude);
+                this.getCity(cachedUserPosition.latitude, cachedUserPosition.longitude);
+            }
             console.log(error);
         });
     }
@@ -61,6 +69,7 @@ class WeatherApp {
             let cachedWeatherData = localStorage.getItem('cachedWeatherData');
             if (cachedWeatherData) {
                 console.log('cachedWeatherData');
+                console.log(cachedWeatherData);
                 cachedWeatherData = JSON.parse(cachedWeatherData);
                 const hourlyWeather = cachedWeatherData.hourly;
                 const weatherData = cachedWeatherData;
