@@ -4,7 +4,7 @@ class Weather {
     constructor(lat, lon) {
         this.lat = lat;
         this.lon = lon;
-
+        this.retryCount = 0;
         this.url_currentWeather = "https://api.open-meteo.com/v1/forecast?latitude="+ this.lat + "&longitude=" + this.lon + "&current=temperature_2m,is_day,weather_code,pressure_msl,wind_speed_10m,wind_direction_10m&hourly=temperature_2m,pressure_msl,weather_code,wind_speed_10m,wind_direction_10m&daily=weather_code&wind_speed_unit=ms&timezone=Europe%2FBerlin&forecast_days=1";
 
 
@@ -28,8 +28,8 @@ class Weather {
                     this.retryCount++;
                     if (this.retryCount < 3) {
                         setTimeout(() => {
-                            this.fetchCurrentWeather();
-                        }, 10000);
+                            this.fetchCurrentWeather().catch(error => { throw error; })
+                        }, 5000);
                     } else {
                         alert('Kunde inte hämta väderdata. Kontrollera din internetanslutning och försök igen.');
                         reject(error);
