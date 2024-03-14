@@ -22,11 +22,12 @@ class WeatherApp {
             this.noLocationScreen.style.display = 'none';
             this.getWeather(userPosition.latitude, userPosition.longitude);
             this.getCity(userPosition.latitude, userPosition.longitude);
-         
+
         }).catch(error => {
             this.noLocationScreen.style.display = 'flex';
-           console.log(error); 
-    });
+            console.log(error);
+        });
+    }
 
     getWeather(lat, lon) {
         console.log(lat, lon);
@@ -56,26 +57,26 @@ class WeatherApp {
             this.loadingSreen.style.display = 'none';
             this.currentWeatherContainer.style.display = 'flex';
             console.log(error);
-                // Check if we have cached data
-                let cachedWeatherData = localStorage.getItem('cachedWeatherData');
-                if (cachedWeatherData) {
-                    console.log('cachedWeatherData');
-                    cachedWeatherData = JSON.parse(cachedWeatherData);
-                    const hourlyWeather = cachedWeatherData.hourly;
-                    const weatherData = cachedWeatherData;
-                    const correntTemp = weatherData.current.temperature_2m;
-                    const correntWind = weatherData.current.wind_speed_10m;
-                    const correntPressure = weatherData.current.pressure_msl;
-                    const correntWeather = weatherData.current.weather_code;
-                    const correntWindDirection = weatherData.current.wind_direction_10m;
+            // Check if we have cached data
+            let cachedWeatherData = localStorage.getItem('cachedWeatherData');
+            if (cachedWeatherData) {
+                console.log('cachedWeatherData');
+                cachedWeatherData = JSON.parse(cachedWeatherData);
+                const hourlyWeather = cachedWeatherData.hourly;
+                const weatherData = cachedWeatherData;
+                const correntTemp = weatherData.current.temperature_2m;
+                const correntWind = weatherData.current.wind_speed_10m;
+                const correntPressure = weatherData.current.pressure_msl;
+                const correntWeather = weatherData.current.weather_code;
+                const correntWindDirection = weatherData.current.wind_direction_10m;
 
-                    this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
-                    this.barometerContainer.update(correntPressure);
-                    this.fishAnimationContainer.setFishId(correntPressure);
-                    this.weatherContainer.setBackGround(correntWeather);
-                    this.hourlyWeather.createHourlyWeather(hourlyWeather);
-                }
-            
+                this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
+                this.barometerContainer.update(correntPressure);
+                this.fishAnimationContainer.setFishId(correntPressure);
+                this.weatherContainer.setBackGround(correntWeather);
+                this.hourlyWeather.createHourlyWeather(hourlyWeather);
+            }
+
         });
 
     }
