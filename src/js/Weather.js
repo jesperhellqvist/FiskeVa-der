@@ -25,12 +25,15 @@ class Weather {
                     resolve();
                 })
                 .catch(error => {
-                   setTimeout(() => {
-                       this.fetchCurrentWeather();
-                       alert('Du är inte ansluten till internet');
-                     }, 10000);
-                    
-                    reject(error);
+                    this.retryCount++;
+                    if (this.retryCount < 3) {
+                        setTimeout(() => {
+                            this.fetchCurrentWeather();
+                        }, 10000);
+                    } else {
+                        alert('Kunde inte hämta väderdata. Kontrollera din internetanslutning och försök igen.');
+                        reject(error);
+                    }
                 });
         });
     }
