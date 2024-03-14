@@ -9,7 +9,6 @@ class Weather {
 
         this.currentWeather = {};
     }
-
     fetchCurrentWeather() {
         return new Promise((resolve, reject) => {
             // Try to get the weather data from the cache
@@ -19,19 +18,23 @@ class Weather {
                         // Cache hit - return the cached response
                         return response.json();
                     } else {
-                        // Cache miss - fetch from the network
+                        // Cache miss - try to fetch from the network
                         return fetch(this.url_currentWeather)
-                            .then(response => response.json());
+                            .then(response => response.json())
+                            .catch(error => {
+                                // Network request failed - reject the promise
+                                reject('Network request failed');
+                            });
                     }
                 })
                 .then(data => {
-                    this.currentWeather = data;
-                    resolve();
+                    if (data) {
+                        this.currentWeather = data;
+                        resolve();
+                    }
                 })
                 .catch(error => {
                     reject(error);
                 });
         });
     }
-
-}
