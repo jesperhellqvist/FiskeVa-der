@@ -14,8 +14,14 @@ class Weather {
     fetchCurrentWeather() {
         return new Promise((resolve, reject) => {
             fetch(this.url_currentWeather)
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    }
+                })
                 .then(data => {
                     this.currentWeather = data;
+                    console.log(this.currentWeather);
                     resolve();
                 })
                 .catch(error => {
