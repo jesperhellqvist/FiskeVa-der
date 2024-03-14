@@ -84,7 +84,13 @@ class WeatherApp {
                 this.fishAnimationContainer.setFishId(correntPressure);
                 this.weatherContainer.setBackGround(correntWeather);
                 this.hourlyWeather.createHourlyWeather(hourlyWeather);
+               
             }
+            else {
+                this.errorScreen.style.display = 'flex';
+            }
+
+           
 
         });
 
