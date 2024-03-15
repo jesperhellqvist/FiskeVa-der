@@ -22,7 +22,6 @@ class WeatherContainer {
     }
 
     update(temp, wind, windDirection) {
-        console.log(temp, wind, windDirection);
         this.tempContainer.update(temp);
         this.windContainer.update(wind, windDirection);
 
@@ -33,7 +32,6 @@ class WeatherContainer {
     }
 
     setBackGround(weatherCode) {
-        console.log(weatherCode);
 
 
         switch (weatherCode) {

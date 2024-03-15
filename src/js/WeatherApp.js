@@ -33,12 +33,10 @@ class WeatherApp {
                 this.getWeather(cachedUserPosition.latitude, cachedUserPosition.longitude);
                 this.getCity(cachedUserPosition.latitude, cachedUserPosition.longitude);
             }
-            console.log(error);
         });
     }
 
     getWeather(lat, lon) {
-        console.log(lat, lon);
         var weather = new Weather(lat, lon);
         weather.fetchCurrentWeather().then(() => {
             this.loadingSreen.style.display = 'none';
@@ -46,7 +44,7 @@ class WeatherApp {
             this.currentWeatherContainer.style.display = 'flex';
             const hourlyWeather = weather.currentWeather.hourly;
             const weatherData = weather.currentWeather;
-            console.log(weatherData);
+           
             const correntTemp = weatherData.current.temperature_2m;
             const correntWind = weatherData.current.wind_speed_10m;
             const correntPressure = weatherData.current.pressure_msl;
@@ -64,12 +62,9 @@ class WeatherApp {
         }).catch(error => {
             this.loadingSreen.style.display = 'none';
             this.currentWeatherContainer.style.display = 'flex';
-            console.log(error);
             // Check if we have cached data
             let cachedWeatherData = localStorage.getItem('cachedWeatherData');
             if (cachedWeatherData) {
-                console.log('cachedWeatherData');
-                console.log(cachedWeatherData);
                 cachedWeatherData = JSON.parse(cachedWeatherData);
                 const hourlyWeather = cachedWeatherData.hourly;
                 const weatherData = cachedWeatherData;

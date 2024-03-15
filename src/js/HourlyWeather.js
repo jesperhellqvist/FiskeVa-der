@@ -29,8 +29,6 @@ class HourlyWeather {
         if (weatherData === undefined) {
             return;
         }
-        console.log(weatherData);
-
 
         var temp = weatherData.temperature_2m;
 
@@ -41,7 +39,7 @@ class HourlyWeather {
         var windSpeed = weatherData.wind_speed_10m;
 
         var windDirection = weatherData.wind_direction_10m;
-        console.log(windDirection);
+       
 
 
         var weatherCode = weatherData.weather_code;
@@ -158,7 +156,7 @@ class HourlyWeather {
 
 
     setBackGround(weatherCode) {
-        console.log(weatherCode);
+        
         switch (weatherCode) {
             case 0:
                 this.weatherImg.src = '../src/js/weather/clearSky.png';

@@ -27,7 +27,6 @@ class Barometer {
         var deg = ((hPa - 961) / (1060 - 961)) * 180 - 90;
 
         this.img.style.transform = 'translateX(-50%) rotate(' + deg + 'deg)';
-        console.log(deg);
     }
 
 

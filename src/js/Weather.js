@@ -11,31 +11,39 @@ class Weather {
     }
     fetchCurrentWeather() {
         return new Promise((resolve, reject) => {
-            // Try to get the weather data from the cache
-            caches.match(this.url_currentWeather)
-                .then(response => {
-                    if (response) {
-                        // Cache hit - return the cached response
-                        return response.json();
-                    } else {
-                        // Cache miss - try to fetch from the network
-                        return fetch(this.url_currentWeather)
-                            .then(response => response.json())
-                            .catch(error => {
-                                // Network request failed - reject the promise
-                                reject('Network request failed');
-                            });
-                    }
-                })
-                .then(data => {
-                    if (data) {
-                        this.currentWeather = data;
-                        resolve();
-                    }
-                })
-                .catch(error => {
-                    reject(error);
-                });
+          // Try to get the weather data from the cache
+          caches.match(this.url_currentWeather)
+            .then(response => {
+              if (response) {
+                // Cache hit - return the cached response
+                return response.json();
+              } else {
+                // Cache miss - try to fetch from the network
+                if (navigator.onLine) {
+                  // Only try to fetch if the user is online
+                  return fetch(this.url_currentWeather)
+                    .then(response => response.json())
+                    .catch(error => {
+                      reject(error);
+                    });
+                } else {
+                    reject('offline')
+                    
+                        alert('Du måste vara online för att få den senaste fiskevädret.');
+                    
+                }
+                
+              }
+            })
+            .then(data => {
+              if (data) {
+                this.currentWeather = data;
+                resolve();
+              }
+            })
+            .catch(error => {
+              return reject(error);
+            });
         });
-    }
+      }
 }
