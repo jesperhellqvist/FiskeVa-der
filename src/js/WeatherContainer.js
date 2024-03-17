@@ -38,25 +38,25 @@ class WeatherContainer {
 
             case 0:
                 this.weatherImg.src = './src/js/weather/clearSky.png';
-                this.weatherDescription.textContent = 'Clear Sky';
+                this.weatherDescription.textContent = 'Klar Himmel';
                 break;
 
             case 1:
                 this.weatherImg.src = './src/js/weather/mainlyClear.png';
-                this.weatherDescription.textContent = 'Few Clouds';
+                this.weatherDescription.textContent = 'Nästan Klar Himmel';
                 break;
             case 2:
                 this.weatherImg.src = './src/js/weather/mainlyClear.png';
-                this.weatherDescription.textContent = 'Scattered Clouds';
+                this.weatherDescription.textContent = 'Halvklart';
                 break;
             case 3:
                 this.weatherImg.src = './src/js/weather/overcast.png';
-                this.weatherDescription.textContent = 'Broken Clouds';
+                this.weatherDescription.textContent = 'Molnigt';
                 break;
 
             case 53:
                 this.weatherImg.src = './src/js/weather/lightrain.gif';
-                this.weatherDescription.textContent = 'Light Rain';
+                this.weatherDescription.textContent = 'Lätt Regn';
             case 63:
             case 81:
                 this.weatherImg.src = './src/js/weather/lightrain.gif';
@@ -66,7 +66,7 @@ class WeatherContainer {
             case 65:
             case 82:
                 this.weatherImg.src = './src/js/weather/heavyrain.gif';
-                this.weatherDescription.textContent = 'Heavy Rain';
+                this.weatherDescription.textContent = 'Kraftigt Regn';
                 break;
 
             case 71:
@@ -76,11 +76,11 @@ class WeatherContainer {
             case 85:
             case 86:
                 this.weatherImg.src = './src/js/weather/snow.gif';
-                this.weatherDescription.textContent = 'Snow';
+                this.weatherDescription.textContent = 'Snö';
                 break;
             default:
-                this.weatherImg.src = './src/js/weather/mainlyClear.png';
-                this.weatherDescription.textContent = 'Clear Sky';
+                this.weatherImg.src = './src/js/weather/clearSky.png';
+                this.weatherDescription.textContent = 'Klar Himmel';
                 break;
         }
 

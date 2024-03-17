@@ -19,7 +19,7 @@ class HourlyWeather {
         this.hourlyWeather.appendChild(this.weatherImg);
         this.headerDiv.className = 'header-div';
         this.hourlyWeather.appendChild(this.headerDiv);
-        this.headerDiv.innerHTML = '<p class="time-header">Time</p><p class="weather-header">Weather</p><p class="temp-header">C°</p><p class="hPa-header">hPa</p><p class="wind-header">m/s</p> <p class="wind-header">&#129517</p>';
+        this.headerDiv.innerHTML = '<p class="time-header">Tid</p><p class="weather-header">Väder</p><p class="temp-header">C°</p><p class="hPa-header">hPa</p><p class="wind-header">m/s</p> <p class="wind-header">&#129517</p>';
         this.hourlyWeatherContainer.className = 'hour-weather-container';
         this.hourlyWeather.appendChild(this.hourlyWeatherContainer);
     }
@@ -73,7 +73,7 @@ class HourlyWeather {
 
 
             var tempElem = document.createElement('p');
-            var temp = weatherData.temperature_2m[h];
+            var temp = Math.floor(weatherData.temperature_2m[h]);
             tempElem.className = 'temp';
             tempElem.innerHTML = temp + '°';
             hourWeather.appendChild(tempElem);
@@ -82,17 +82,17 @@ class HourlyWeather {
             var hPa = document.createElement('p');
             hPa.className = 'hPa';
             if (hpa[h] >= hpa[h - 1]) {
-                hPa.innerHTML = hpa[h] + ' ↑';
+                hPa.innerHTML = Math.floor(hpa[h]) + ' ↑';
             }
             else {
-                hPa.innerHTML = hpa[h] + ' ↓';
+                hPa.innerHTML = Math.floor(hpa[h]) + ' ↓';
             }
             hourWeather.appendChild(hPa);
 
 
             var wind = document.createElement('p');
             wind.className = 'wind';
-            wind.innerHTML = windSpeed[h];
+            wind.innerHTML = Math.floor(windSpeed[h]);
             hourWeather.appendChild(wind);
 
             var windImg = document.createElement('img');
@@ -156,42 +156,51 @@ class HourlyWeather {
 
 
     setBackGround(weatherCode) {
-        
+
+       
         switch (weatherCode) {
+
             case 0:
-                this.weatherImg.src = '../src/js/weather/clearSky.png';
+                this.weatherImg.src = './src/js/weather/clearSky.png';
                 break;
+
             case 1:
-                this.weatherImg.src = '../src/js/weather/mainlyClear.png';
+                this.weatherImg.src = './src/js/weather/mainlyClear.png';
                 break;
             case 2:
-                this.weatherImg.src = '../src/js/weather/mainlyClear.png';
+                this.weatherImg.src = './src/js/weather/mainlyClear.png';
                 break;
             case 3:
-                this.weatherImg.src = '../src/js/weather/overcast.png';
+                this.weatherImg.src = './src/js/weather/overcast.png';
                 break;
+
             case 53:
+                this.weatherImg.src = './src/js/weather/lightrain.gif';
             case 63:
             case 81:
-                this.weatherImg.src = '../src/js/weather/lightrain.gif';
+                this.weatherImg.src = './src/js/weather/lightrain.gif';
+
                 break;
             case 55:
             case 65:
             case 82:
-                this.weatherImg.src = '../src/js/weather/heavyrain.gif';
+                this.weatherImg.src = './src/js/weather/heavyrain.gif';
                 break;
+
             case 71:
             case 73:
             case 75:
             case 77:
             case 85:
             case 86:
-                this.weatherImg.src = '../src/js/weather/snow.gif';
+                this.weatherImg.src = './src/js/weather/snow.gif';
                 break;
-
             default:
-                this.weatherImg.src = '../src/js/weather/mainlyClear.png';
+                this.weatherImg.src = './src/js/weather/clearSky.png';
+                break;
         }
+
+        return this.weatherImg.src;
     }
 
 }
