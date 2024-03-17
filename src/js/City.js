@@ -10,32 +10,30 @@ class City {
 
     fetchCity() {
         return new Promise((resolve, reject) => {
-            caches.match(this.url)
-                .then(response => {
-                    if (response) {
-                        return response.json();
-                    } else {
-                        if (navigator.onLine) {
-                            return fetch(this.url)
-                                .then(response => response.json())
-                                .catch(error => {
-                                    reject(error);
-                                });
-                        } else {
-                            reject('offline');
-                        }
-                    }
-                })
-                .then(data => {
-                    if (data) {
-                        this.city = data;
-                        resolve();
-                    }
-                })
-                .catch(error => {
-                    return reject(error);
-                });
-
+          if (navigator.onLine) {
+            // User is online - fetch from the network
+            fetch(this.url)
+              .then(response => response.json())
+              .then(data => {
+                this.city = data;
+                // Save the data to localStorage
+                localStorage.setItem('city', JSON.stringify(data));
+                resolve();
+              })
+              .catch(error => {
+                reject('An error occurred while fetching the city data: ', error);
+              });
+          } else {
+            // User is offline - get the data from localStorage
+            const data = JSON.parse(localStorage.getItem('city'));
+            if (data) {
+                console.log('Using cached city data');
+              this.city = data;
+              resolve();
+            } else {
+              reject('No data available');
+            }
+          }
         });
-    }
+      }
 }

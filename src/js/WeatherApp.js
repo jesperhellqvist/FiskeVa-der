@@ -7,8 +7,6 @@ class WeatherApp {
         this.noLocationScreen = document.getElementById('noLocationScreen');
         this.errorScreen = document.getElementById('errorScreen');
 
-
-
         this.weatherContainer = new WeatherContainer(this.currentWeatherContainer);
         this.barometerContainer = new BarometerContainer(this.currentWeatherContainer);
         this.fishAnimationContainer = new FishAnimationContainer(this.currentWeatherContainer);
@@ -22,17 +20,11 @@ class WeatherApp {
             this.noLocationScreen.style.display = 'none';
             this.getWeather(userPosition.latitude, userPosition.longitude);
             this.getCity(userPosition.latitude, userPosition.longitude);
-            localStorage.setItem('cachedUserPosition', JSON.stringify({ latitude: userPosition.latitude, longitude: userPosition.longitude }));
+           
 
         }).catch(error => {
             this.noLocationScreen.style.display = 'flex';
-            // Check if we have cached data
-            let cachedUserPosition = localStorage.getItem('cachedUserPosition');
-            if (cachedUserPosition) {
-                cachedUserPosition = JSON.parse(cachedUserPosition);
-                this.getWeather(cachedUserPosition.latitude, cachedUserPosition.longitude);
-                this.getCity(cachedUserPosition.latitude, cachedUserPosition.longitude);
-            }
+            this.loadingSreen.style.display = 'none';
         });
     }
 
@@ -51,42 +43,15 @@ class WeatherApp {
             const correntWeather = weatherData.current.weather_code;
             const correntWindDirection = weatherData.current.wind_direction_10m;
 
-
             this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
             this.barometerContainer.update(correntPressure);
             this.fishAnimationContainer.setFishId(correntPressure);
             this.weatherContainer.setBackGround(correntWeather);
             this.hourlyWeather.createHourlyWeather(hourlyWeather);
-            localStorage.setItem('cachedWeatherData', JSON.stringify(weather.currentWeather));
 
         }).catch(error => {
             this.loadingSreen.style.display = 'none';
-            this.currentWeatherContainer.style.display = 'flex';
-            // Check if we have cached data
-            let cachedWeatherData = localStorage.getItem('cachedWeatherData');
-            if (cachedWeatherData) {
-                cachedWeatherData = JSON.parse(cachedWeatherData);
-                const hourlyWeather = cachedWeatherData.hourly;
-                const weatherData = cachedWeatherData;
-                const correntTemp = weatherData.current.temperature_2m;
-                const correntWind = weatherData.current.wind_speed_10m;
-                const correntPressure = weatherData.current.pressure_msl;
-                const correntWeather = weatherData.current.weather_code;
-                const correntWindDirection = weatherData.current.wind_direction_10m;
-
-                this.weatherContainer.update(correntTemp, correntWind, correntWindDirection);
-                this.barometerContainer.update(correntPressure);
-                this.fishAnimationContainer.setFishId(correntPressure);
-                this.weatherContainer.setBackGround(correntWeather);
-                this.hourlyWeather.createHourlyWeather(hourlyWeather);
-               
-            }
-            else {
-                this.errorScreen.style.display = 'flex';
-            }
-
-           
-
+            this.errorScreen.style.display = 'flex';
         });
 
     }
@@ -97,16 +62,9 @@ class WeatherApp {
         var city = new City(lat, lon);
         city.fetchCity().then(() => {
             this.weatherContainer.updateCity(city.city);
-            localStorage.setItem('cachedCityData', JSON.stringify(city.city));
+            
         }).catch(error => {
-            let cachedCityData = localStorage.getItem('cachedCityData');
-            if (cachedCityData) {
-                cachedCityData = JSON.parse(cachedCityData);
-                this.weatherContainer.updateCity(cachedCityData);
-            }
+            console.error('Ett fel uppstod: ', error);
         });
     }
-
-
-
 }
