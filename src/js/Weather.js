@@ -22,13 +22,14 @@ class Weather {
             resolve();
           })
           .catch(error => {
-            reject('An error occurred while fetching the weather data: ', error);
+            reject('Det gick inte att hämta väderdata: ', error);
           });
       } else {
         // User is offline - get the data from localStorage
         const data = JSON.parse(localStorage.getItem('currentWeather'));
         if (data) {
           console.log('Using cached data');
+          alert('Du är offline, Fiske-Väder använder sparad data');
           this.currentWeather = data;
           resolve();
         } else {

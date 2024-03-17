@@ -64,7 +64,7 @@ class WeatherApp {
             this.weatherContainer.updateCity(city.city);
             
         }).catch(error => {
-            console.error('Ett fel uppstod: ', error);
+            this.weatherContainer.updateCity('Hittar ingen plats');
         });
     }
 }

@@ -16,6 +16,11 @@ class UserPositionContainer {
     }
 
     update(place) {
+        if (place === 'Hittar ingen plats') { // Något gick fel när platsen hämtas
+            this.pElement.innerHTML = 'Hittar ingen plats';
+            this.pElement.style.fontSize = '1.5em';
+            return;
+        }
 
         var city = place.address.city;
         var country = place.address.country;
