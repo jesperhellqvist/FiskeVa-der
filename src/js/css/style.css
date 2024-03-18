@@ -136,6 +136,7 @@ a:hover {
 }
 #barometer {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 20px;
@@ -144,6 +145,14 @@ a:hover {
     top: 40%;
     z-index: 3;
 }
+
+#barometer p {
+    font-size: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
 
 #barpointer {
     position: absolute;

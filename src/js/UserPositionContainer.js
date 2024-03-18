@@ -1,20 +1,32 @@
-
-
+/**
+ * Class representerar user position behållaren.
+ */
 class UserPositionContainer {
+     /**
+   * Skapar en user position container.
+   * @param {HTMLElement} weatherContainer - Behållaren för weather app.
+   */
     constructor(weatherContainer) {
         this.userPositionDiv = document.createElement('div');
         this.pElement = document.createElement('p');
-    
         this.addElements(weatherContainer);
     }
-
+  /**
+   * Lägger till element till weather container.
+   * @param {HTMLElement} weatherContainer - Behållaren för weather app.
+   * @returns {undefined} - Inget returvärde.
+   */
     addElements(weatherContainer) {
     this.userPositionDiv.id = 'user-position';
         weatherContainer.appendChild(this.userPositionDiv);
         this.pElement.id = 'user-city';
         this.userPositionDiv.appendChild(this.pElement);
     }
-
+/**
+   * Uppdaterar platsen med ett en ny palats.
+   * @param {(Object | string)} place - Nya platsen eller felmeddelande.
+   * @returns {undefined} - Inget returvärde.
+   */
     update(place) {
         if (place === 'Hittar ingen plats') { // Något gick fel när platsen hämtas
             this.pElement.innerHTML = 'Hittar ingen plats';
@@ -59,8 +71,4 @@ class UserPositionContainer {
         }
 
     }
-
-
-
-
 }

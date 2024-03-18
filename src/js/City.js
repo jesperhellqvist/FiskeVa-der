@@ -1,11 +1,11 @@
 /**
- * Class representing a city.
+ * Class representerar en city.
  */
 class City {
     /**
-  * Create a city.
-  * @param {number} lat - The latitude of the city.
-  * @param {number} lon - The longitude of the city.
+  * Skapar en city.
+  * @param {number} lat - Latitud för city.
+  * @param {number} lon - Longitude för city.
   */
     constructor(lat, lon) {
         this.lat = lat;
@@ -14,18 +14,18 @@ class City {
         this.city = {};
     }
     /**
-  * Fetch city data from the network or from localStorage if offline.
-  * @return {Promise} A promise that resolves when the data is fetched.
+  * Hämtar city data från nätverket eller från localStorage om användaren är offline.
+  * @return {Promise} Ett löfte som lyckas eller misslyckas beroende på om data kunde hämtas.
   */
     fetchCity() {
         return new Promise((resolve, reject) => {
             if (navigator.onLine) {
-                // User is online - fetch from the network
+                // Användaren är online - hämta från nätverket
                 fetch(this.url)
                     .then(response => response.json())
                     .then(data => {
                         this.city = data;
-                        // Save the data to localStorage
+                        // Sparar data till localStorage
                         localStorage.setItem('city', JSON.stringify(data));
                         resolve();
                     })
@@ -33,7 +33,7 @@ class City {
                         reject('An error occurred while fetching the city data: ', error);
                     });
             } else {
-                // User is offline - get the data from localStorage
+                // Användaren är offline - hämtar data från localStorage
                 const data = JSON.parse(localStorage.getItem('city'));
                 if (data) {
                     console.log('Using cached city data');

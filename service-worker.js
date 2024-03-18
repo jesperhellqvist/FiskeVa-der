@@ -1,4 +1,13 @@
+/**
+ * Namn på cachen som används för att lagra filer.
+ * @type {string}
+ */
 const CACHE_NAME = 'pwa-cache-v1';
+
+/**
+ * URLs som ska cachelagras.
+ * @type {string[]}
+ */
 
 const urlsToCache = [
     '/',
@@ -44,6 +53,10 @@ const urlsToCache = [
 
 ];
 
+/**
+ * Installera service workern.
+ */
+
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
@@ -53,17 +66,19 @@ self.addEventListener('install', event => {
     );
 });
 
-
+/**
+ * Hämta filer från cachen.
+ */
 self.addEventListener('fetch', event => {
     event.respondWith(
         fetch(event.request) //
             .then(response => {
-                // Check if we received a valid response
+                // Kontrollera om vi fick ett svarsobjekt
                 if (!response || response.status !== 200 || response.type !== 'basic') {
                     return response;
                 }
 
-                // Clone the response because it's a stream
+                // Klona svarsobjektet
                 let responseToCache = response.clone();
 
                 caches.open(CACHE_NAME)
@@ -71,10 +86,10 @@ self.addEventListener('fetch', event => {
                         cache.put(event.request, responseToCache); 
                     });
 
-                return response; // 
+                return response;
             })
             .catch(() => {
-                // Network request failed, try to get it from the cache
+                // Om vi inte är anslutna till internet, försök hämta från cachen
                 return caches.match(event.request);
             })
     );

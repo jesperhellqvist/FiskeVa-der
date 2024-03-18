@@ -1,15 +1,23 @@
-
+/**
+ * Class representerar en fish animation container.
+ */
 
 class FishAnimationContainer {
+  /**
+   * Skapar en fish animation container.
+   * @param {HTMLElement} weatherAppContainer - Behållaren för weather app.
+   */
   constructor(weatherAppContainer) {
     this.fishAnimationContainer = document.createElement('div');
     this.fishImg = document.createElement('img');
     this.background = document.createElement('img');
-
-
     this.addElements(weatherAppContainer);
   }
-
+ /**
+   * ALägger till element till weather app container.
+   * @param {HTMLElement} weatherAppContainer - Behållaren för weather app.
+   * @returns {undefined} - Inget returvärde.
+   */
   addElements(weatherAppContainer) {
     this.fishAnimationContainer.id = 'fish-animation-container';
     weatherAppContainer.appendChild(this.fishAnimationContainer);
@@ -21,7 +29,11 @@ class FishAnimationContainer {
     this.fishAnimationContainer.appendChild(this.background);
   }
 
-
+  /**
+   * Sätter fiskens id beroende på tryckvärdet.
+   * @param {number} hPa - Tryckvärdet i hPa.
+   * @returns {undefined} - Inget returvärde.
+   */
   setFishId(hPa) {
 
     if (hPa < 1013) {

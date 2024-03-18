@@ -1,6 +1,12 @@
-
-
+/**
+ * Class representerar Vädret.
+ */
 class Weather {
+   /**
+   * Skapar ett weather object.
+   * @param {number} lat - Latitude koordinaten.
+   * @param {number} lon - Longitude koordinaten.
+   */
   constructor(lat, lon) {
     this.lat = lat;
     this.lon = lon;
@@ -9,15 +15,19 @@ class Weather {
 
     this.currentWeather = {};
   }
+  /**
+   * Hämtar väderdata från nätverket eller från localStorage om användaren är offline.
+   * @returns {Promise} - Ett löfte som lyckas eller misslyckas beroende på om data kunde hämtas.
+   */
   fetchCurrentWeather() {
     return new Promise((resolve, reject) => {
       if (navigator.onLine) {
-        // User is online - fetch from the network
+        // Användare är online - hämta från nätverket
         fetch(this.url_currentWeather)
           .then(response => response.json())
           .then(data => {
             this.currentWeather = data;
-            // Save the data to localStorage
+            // Spara data till localStorage
             localStorage.setItem('currentWeather', JSON.stringify(data));
             resolve();
           })
@@ -25,7 +35,7 @@ class Weather {
             reject('Det gick inte att hämta väderdata: ', error);
           });
       } else {
-        // User is offline - get the data from localStorage
+        // Användare är offline - hämta data från localStorage
         const data = JSON.parse(localStorage.getItem('currentWeather'));
         if (data) {
           console.log('Using cached data');

@@ -1,33 +1,43 @@
-
+/**
+ * Class rrepresenterar weather app.
+ */
 class WeatherApp {
+    /**
+  * Skapar en weather app.
+  */
     constructor() {
         this.currentWeatherContainer = document.getElementById('current-weather');
         this.hourlyWeatherContainer = document.getElementById('hourly-weather');
         this.loadingSreen = document.getElementById('loadingScreen');
         this.noLocationScreen = document.getElementById('noLocationScreen');
         this.errorScreen = document.getElementById('errorScreen');
-
         this.weatherContainer = new WeatherContainer(this.currentWeatherContainer);
         this.barometerContainer = new BarometerContainer(this.currentWeatherContainer);
         this.fishAnimationContainer = new FishAnimationContainer(this.currentWeatherContainer);
         this.hourlyWeather = new HourlyWeather(this.hourlyWeatherContainer);
         this.getUserPosition();
     }
-
+    /**
+       * Hämtar användarens position.
+       * @returns {undefined} - Inget returvärde.
+       */
     getUserPosition() {
         var userPosition = new UserPosition();
         userPosition.locationPromise.then(() => {
             this.noLocationScreen.style.display = 'none';
             this.getWeather(userPosition.latitude, userPosition.longitude);
             this.getCity(userPosition.latitude, userPosition.longitude);
-           
-
         }).catch(error => {
             this.noLocationScreen.style.display = 'flex';
             this.loadingSreen.style.display = 'none';
         });
     }
-
+    /**
+      * Hämtar vädret för en specifik latitud och longitud.
+      * @param {number} lat - Latituden.
+      * @param {number} lon - Longituden.
+      * @returns {undefined} - Inget returvärde.
+      */
     getWeather(lat, lon) {
         var weather = new Weather(lat, lon);
         weather.fetchCurrentWeather().then(() => {
@@ -36,7 +46,7 @@ class WeatherApp {
             this.currentWeatherContainer.style.display = 'flex';
             const hourlyWeather = weather.currentWeather.hourly;
             const weatherData = weather.currentWeather;
-           
+
             const correntTemp = weatherData.current.temperature_2m;
             const correntWind = weatherData.current.wind_speed_10m;
             const correntPressure = weatherData.current.pressure_msl;
@@ -55,6 +65,12 @@ class WeatherApp {
         });
 
     }
+    /**
+     * Hämtar staden för en specifik latitud och longitud.
+     * @param {number} lat - Latituden.
+     * @param {number} lon - Longituden.
+     * @returns {undefined} - Inget returvärde.
+        */
 
 
     getCity(lat, lon) {
@@ -62,7 +78,7 @@ class WeatherApp {
         var city = new City(lat, lon);
         city.fetchCity().then(() => {
             this.weatherContainer.updateCity(city.city);
-            
+
         }).catch(error => {
             this.weatherContainer.updateCity('Hittar ingen plats');
         });

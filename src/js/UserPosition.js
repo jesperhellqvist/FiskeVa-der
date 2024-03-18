@@ -1,10 +1,19 @@
+/**
+ * Class representerar användarens position.
+ */
 class UserPosition {
+  /**
+   * Skapar en user's position.
+   */
   constructor() {
     this.latitude = null;
     this.longitude = null;
     this.locationPromise = this.getCurrentPosition();
   }
-
+/**
+   * Hämtar användarens position.
+   * @returns {Promise} - Ett löfte som lyckas eller misslyckas beroende på om positionen kunde hämtas.
+   */
   async getCurrentPosition() {
     return new Promise((resolve, reject) => {
       if (navigator.geolocation) {
@@ -28,7 +37,7 @@ class UserPosition {
               if (latitude && longitude) {
                 resolve({ latitude: parseFloat(latitude), longitude: parseFloat(longitude) });
               } else {
-                reject('No position available');
+                reject('No position available.');
               }
             } else {
               reject(error);

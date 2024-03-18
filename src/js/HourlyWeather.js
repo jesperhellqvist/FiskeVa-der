@@ -1,6 +1,12 @@
-
+/**
+ * Class representerar hourly weather.
+ */
 
 class HourlyWeather {
+    /**
+   * Skapar hourly weather.
+   * @param {HTMLElement} weatherAppContainer - Behållaren för weather app.
+   */
     constructor(weatherAppContainer) {
         this.hourlyWeather = document.createElement('div');
         this.weatherImg = document.createElement('img');
@@ -10,12 +16,15 @@ class HourlyWeather {
         this.videoElement.autoplay = true;
         this.videoElement.loop = true;
         this.videoElement.className = 'weather-img';
-
         this.addElements(weatherAppContainer);
         this.createHourlyWeather();
     }
 
-
+/**
+   * Lägger till element till weather app container.
+   * @param {HTMLElement} weatherAppContainer - Behållaren för weather app.
+   * @returns {undefined} - Inget returvärde.
+   */
     addElements(weatherAppContainer) {
         this.hourlyWeather.id = 'hourly-weather-container';
         weatherAppContainer.appendChild(this.hourlyWeather);
@@ -29,7 +38,11 @@ class HourlyWeather {
         this.hourlyWeather.appendChild(this.hourlyWeatherContainer);
     }
 
-
+/**
+   * Upptaterar hourly weather med ny väderdata.
+   * @param {Object} weatherData - Den nya väderdatan.
+   * @returns {undefined} - Inget returvärde.
+   */
     createHourlyWeather(weatherData) {
         if (weatherData === undefined) {
             return;
@@ -111,7 +124,11 @@ class HourlyWeather {
         this.setBackGround(weatherCode[0]);
     }
 
-
+/**
+   * Sätt väder ikon beroende på väderkoden.
+   * @param {number} code - Väderkoden.
+   * @returns {string} URL till väder ikonen.
+   */
     setWeatherIcon(weatherCode) {
 
         switch (weatherCode) {
@@ -159,7 +176,11 @@ class HourlyWeather {
         }
     }
 
-
+/**
+ * Sätt bakgrund beroende på väderkoden.
+ * @param {number} weatherCode - Väderkoden.
+ * @returns {undefined} - Inget returvärde.
+ * */
     setBackGround(weatherCode) {
 
 
@@ -208,7 +229,5 @@ class HourlyWeather {
                 this.weatherImg.src = './src/js/weather/clearSky.png';
                 break;
         }
-
     }
-
 }
