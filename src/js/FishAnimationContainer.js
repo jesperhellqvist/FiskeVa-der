@@ -36,7 +36,7 @@ class FishAnimationContainer {
    */
   setFishId(hPa) {
 
-    if (hPa < 10130) {
+    if (hPa < 1013) {
       this.fishImg.id = 'fish';
     }
     else {
