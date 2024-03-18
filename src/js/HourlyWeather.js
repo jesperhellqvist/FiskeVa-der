@@ -6,6 +6,10 @@ class HourlyWeather {
         this.weatherImg = document.createElement('img');
         this.headerDiv = document.createElement('div');
         this.hourlyWeatherContainer = document.createElement('div');
+        this.videoElement = document.createElement('video');
+        this.videoElement.autoplay = true;
+        this.videoElement.loop = true;
+        this.videoElement.className = 'weather-img';
 
         this.addElements(weatherAppContainer);
         this.createHourlyWeather();
@@ -17,6 +21,7 @@ class HourlyWeather {
         weatherAppContainer.appendChild(this.hourlyWeather);
         this.weatherImg.className = 'weather-img';
         this.hourlyWeather.appendChild(this.weatherImg);
+        this.hourlyWeather.appendChild(this.videoElement);
         this.headerDiv.className = 'header-div';
         this.hourlyWeather.appendChild(this.headerDiv);
         this.headerDiv.innerHTML = '<p class="time-header">Tid</p><p class="weather-header">Väder</p><p class="temp-header">C°</p><p class="hPa-header">hPa</p><p class="wind-header">m/s</p> <p class="wind-header">&#129517</p>';
@@ -39,7 +44,7 @@ class HourlyWeather {
         var windSpeed = weatherData.wind_speed_10m;
 
         var windDirection = weatherData.wind_direction_10m;
-       
+
 
 
         var weatherCode = weatherData.weather_code;
@@ -157,7 +162,7 @@ class HourlyWeather {
 
     setBackGround(weatherCode) {
 
-       
+
         switch (weatherCode) {
 
             case 0:
@@ -175,16 +180,19 @@ class HourlyWeather {
                 break;
 
             case 53:
-                this.weatherImg.src = './src/js/weather/lightrain.gif';
+                this.weatherImg.src = '';
+                this.videoElement.src = './src/js/weather/lightrain.mp4';
             case 63:
             case 81:
-                this.weatherImg.src = './src/js/weather/lightrain.gif';
+                this.weatherImg.src = '';
+                this.videoElement.src = './src/js/weather/lightrain.mp4';
 
                 break;
             case 55:
             case 65:
             case 82:
-                this.weatherImg.src = './src/js/weather/heavyrain.gif';
+                this.weatherImg.src = '';
+                this.videoElement.src = './src/js/weather/heavyrain.mp4';
                 break;
 
             case 71:
@@ -193,14 +201,14 @@ class HourlyWeather {
             case 77:
             case 85:
             case 86:
-                this.weatherImg.src = './src/js/weather/snow.gif';
+                this.weatherImg.src = '';
+                this.videoElement.src = './src/js/weather/snow.mp4';
                 break;
             default:
                 this.weatherImg.src = './src/js/weather/clearSky.png';
                 break;
         }
 
-        return this.weatherImg.src;
     }
 
 }

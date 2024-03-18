@@ -8,6 +8,10 @@ class WeatherContainer {
         this.userPosition = new UserPositionContainer(this.weatherContainer);
         this.weatherDescription = document.createElement('p');
         this.weatherImg = document.createElement('img');
+        this.videoElement = document.createElement('video');
+        this.videoElement.autoplay = true;
+        this.videoElement.loop = true;
+        this.videoElement.className = 'weather-img';
 
         this.addElements(weatherAppContainer);
     }
@@ -19,6 +23,7 @@ class WeatherContainer {
         this.weatherContainer.appendChild(this.weatherDescription);
         this.weatherImg.className = 'weather-img';
         this.weatherContainer.appendChild(this.weatherImg);
+        this.weatherContainer.appendChild(this.videoElement);
     }
 
     update(temp, wind, windDirection) {
@@ -33,40 +38,36 @@ class WeatherContainer {
 
     setBackGround(weatherCode) {
 
-
         switch (weatherCode) {
 
             case 0:
                 this.weatherImg.src = './src/js/weather/clearSky.png';
-                this.weatherDescription.textContent = 'Klar Himmel';
                 break;
 
             case 1:
                 this.weatherImg.src = './src/js/weather/mainlyClear.png';
-                this.weatherDescription.textContent = 'Nästan Klar Himmel';
                 break;
             case 2:
                 this.weatherImg.src = './src/js/weather/mainlyClear.png';
-                this.weatherDescription.textContent = 'Halvklart';
                 break;
             case 3:
                 this.weatherImg.src = './src/js/weather/overcast.png';
-                this.weatherDescription.textContent = 'Molnigt';
                 break;
 
             case 53:
-                this.weatherImg.src = './src/js/weather/lightrain.gif';
-                this.weatherDescription.textContent = 'Lätt Regn';
+                this.weatherImg.src = '';
+                this.videoElement.src = './src/js/weather/lightrain.mp4';
             case 63:
             case 81:
-                this.weatherImg.src = './src/js/weather/lightrain.gif';
+                this.weatherImg.src = '';
+                this.videoElement.src = './src/js/weather/lightrain.mp4';
 
                 break;
             case 55:
             case 65:
             case 82:
-                this.weatherImg.src = './src/js/weather/heavyrain.gif';
-                this.weatherDescription.textContent = 'Kraftigt Regn';
+                this.weatherImg.src = '';
+                this.videoElement.src = './src/js/weather/heavyrain.mp4';
                 break;
 
             case 71:
@@ -75,16 +76,14 @@ class WeatherContainer {
             case 77:
             case 85:
             case 86:
-                this.weatherImg.src = './src/js/weather/snow.gif';
-                this.weatherDescription.textContent = 'Snö';
+                this.weatherImg.src = '';
+                this.videoElement.src = './src/js/weather/snow.mp4';
                 break;
             default:
                 this.weatherImg.src = './src/js/weather/clearSky.png';
-                this.weatherDescription.textContent = 'Klar Himmel';
                 break;
         }
 
-        return this.weatherImg.src;
     }
 
 
