@@ -53,6 +53,7 @@ var Main = {
     },
 
     handleTouchMove: function (evt) {
+        
         if (!Main.xDown || !Main.yDown) {
             return;
         }
@@ -68,6 +69,7 @@ var Main = {
             Main.yDown = null;
             // Refresh the weather data
             Main.weatherApp.refreshWeatherData();
+            evt.preventDefault();
         }  
     },
 
