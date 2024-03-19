@@ -85,8 +85,12 @@ class WeatherApp {
         });
     }
 
+
+    /**
+     * Uppdaterar vädret och se till att rätt behållare visas beroende på var uppdaterningen sker.
+     * @returns {undefined} - Inget returvärde.
+     */
     refresh() {
-        // Before starting the refresh, remember the active container
     this.activeContainer = this.currentWeatherContainer.style.display === 'flex' ? this.currentWeatherContainer : this.hourlyWeatherContainer;
     this.loadingSreen.style.display = 'flex';
     this.currentWeatherContainer.style.display = 'none';
