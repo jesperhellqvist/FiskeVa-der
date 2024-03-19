@@ -47,7 +47,7 @@ var Main = {
              startY = event.touches[0].clientY;
         }, false);
 
-        this.window.addEventListener('touchmove', (event) => {
+        window.addEventListener('touchmove', (event) => {
             var endY = event.touches[0].clientY;
             if (endY > startY) {
                 console.log('pull down');
