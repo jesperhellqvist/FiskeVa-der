@@ -60,7 +60,7 @@ var Main = {
             
             if (isPullingDown && endY - startY > 50) {
                 console.log('pull down');
-                weatherApp.refreshWeatherData();
+                weatherApp.refresh();
             }
             isPullingDown = false;
         }, false);
