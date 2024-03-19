@@ -64,6 +64,7 @@ class HourlyWeather {
         var weatherCode = weatherData.weather_code;
         var h = new Date().getHours();
 
+        this.hourlyWeatherContainer.innerHTML = '';
 
         for (var i = 0; i < 24; i++) {
 
