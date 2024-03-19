@@ -9,7 +9,7 @@ var Main = {
         var weatherApp = new WeatherApp();
         Main.handleNavigation();
         Main.registerServiceWorker();
-        Main.pullToRefresh();
+        Main.pullToRefresh(weatherApp);
 
     },
     /**
@@ -40,7 +40,7 @@ var Main = {
         }
     },
 
-    pullToRefresh: function () {
+    pullToRefresh: function (weatherApp) {
         let startY;
         let endY;
         let isPullingDown = false;
@@ -57,10 +57,10 @@ var Main = {
         }, false);
     
         window.addEventListener('touchend', (event) => {
-            // Only refresh if the user was pulling down and pulled down more than 50px
+            
             if (isPullingDown && endY - startY > 50) {
                 console.log('pull down');
-                Main.weatherApp.refreshWeatherData();
+                weatherApp.refreshWeatherData();
             }
             isPullingDown = false;
         }, false);
