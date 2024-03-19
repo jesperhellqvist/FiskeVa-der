@@ -15,6 +15,7 @@ class WeatherApp {
         this.barometerContainer = new BarometerContainer(this.currentWeatherContainer);
         this.fishAnimationContainer = new FishAnimationContainer(this.currentWeatherContainer);
         this.hourlyWeather = new HourlyWeather(this.hourlyWeatherContainer);
+        this.activeContainer = this.currentWeatherContainer;    
         this.getUserPosition();
     }
     /**
@@ -43,7 +44,7 @@ class WeatherApp {
         weather.fetchCurrentWeather().then(() => {
             this.loadingSreen.style.display = 'none';
             this.errorScreen.style.display = 'none';
-            this.currentWeatherContainer.style.display = 'flex';
+            this.activeContainer.style.display = 'flex';
             const hourlyWeather = weather.currentWeather.hourly;
             const weatherData = weather.currentWeather;
 
@@ -85,10 +86,12 @@ class WeatherApp {
     }
 
     refresh() {
-        this.loadingSreen.style.display = 'flex';
-        this.currentWeatherContainer.style.display = 'none';
-        this.hourlyWeatherContainer.style.display = 'none';
-        this.getUserPosition();
+        // Before starting the refresh, remember the active container
+    this.activeContainer = this.currentWeatherContainer.style.display === 'flex' ? this.currentWeatherContainer : this.hourlyWeatherContainer;
+    this.loadingSreen.style.display = 'flex';
+    this.currentWeatherContainer.style.display = 'none';
+    this.hourlyWeatherContainer.style.display = 'none';
+    this.getUserPosition();
     }
 }
 
