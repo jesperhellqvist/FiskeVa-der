@@ -65,43 +65,6 @@ var Main = {
             isPullingDown = false;
         }, false);
     },
-    // pullToRefresh: function () {
-
-    //     window.addEventListener('touchstart', Main.handleTouchStart.bind(this), false);
-    //     window.addEventListener('touchmove', Main.handleTouchMove.bind(this), false);
-    //     Main.xDown = null;
-    //     Main.yDown = null;
-
-    // },
-
-    // handleTouchStart: function (evt) {
-    //     console.log('touchstart');
-    //     Main.xDown = evt.touches[0].clientX;
-    //     Main.yDown = evt.touches[0].clientY;
-    // },
-
-    // handleTouchMove: function (evt) {
-    //     console.log('touchmove');
-    //     if (!Main.xDown || !Main.yDown) {
-    //         console.log('return');
-    //         return;
-    //     }
-
-    //     var xUp = evt.touches[0].clientX;
-    //     var yUp = evt.touches[0].clientY;
-
-    //     var xDiff = Main.xDown - xUp;
-    //     var yDiff = Main.yDown - yUp;
-    //     if ( Math.abs( xDiff ) < Math.abs( yDiff ) && yDiff < 0 ) {
-    //         console.log('pull down');
-    //         /* reset values */
-    //         Main.xDown = null;
-    //         Main.yDown = null;
-    //         // Refresh the weather data
-    //         Main.weatherApp.refreshWeatherData();
-    //         evt.preventDefault();
-    //     }  
-    // },
 
     /**
        * Registrerar service worker.
