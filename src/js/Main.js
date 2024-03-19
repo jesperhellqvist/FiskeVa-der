@@ -39,6 +39,12 @@ var Main = {
             section.style.display = 'flex';
         }
     },
+    /**
+     * Hanterar pull to refresh.
+     * @param {WeatherApp} weatherApp - Väder app objektet.
+     * @returns {undefined} - Inget returvärde.
+     * 
+        */
 
     pullToRefresh: function (weatherApp) {
         let startY;
