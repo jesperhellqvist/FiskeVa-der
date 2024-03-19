@@ -17,6 +17,7 @@ class WeatherContainer {
         this.videoElement = document.createElement('video');
         this.videoElement.autoplay = true;
         this.videoElement.loop = true;
+        this.videoElement.muted = true;
         this.videoElement.className = 'weather-img';
 
         this.addElements(weatherAppContainer);
