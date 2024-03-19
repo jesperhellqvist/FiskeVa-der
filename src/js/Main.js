@@ -42,17 +42,27 @@ var Main = {
 
     pullToRefresh: function () {
         let startY;
-
+        let endY;
+        let isPullingDown = false;
+    
         window.addEventListener('touchstart', (event) => {
-             startY = event.touches[0].clientY;
+            startY = event.touches[0].clientY;
         }, false);
-
+    
         window.addEventListener('touchmove', (event) => {
-            var endY = event.touches[0].clientY;
+            endY = event.touches[0].clientY;
             if (endY > startY) {
+                isPullingDown = true;
+            }
+        }, false);
+    
+        window.addEventListener('touchend', (event) => {
+            // Only refresh if the user was pulling down and pulled down more than 50px
+            if (isPullingDown && endY - startY > 50) {
                 console.log('pull down');
                 Main.weatherApp.refreshWeatherData();
             }
+            isPullingDown = false;
         }, false);
     },
     // pullToRefresh: function () {
