@@ -41,7 +41,7 @@ var Main = {
     },
 
     pullToRefresh: function () {
-        this.window.addEventListener('touchstart', (event) => {
+        window.addEventListener('touchstart', (event) => {
             var startY = event.touches[0].clientY;
         }, false);
 
