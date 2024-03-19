@@ -64,7 +64,7 @@ var Main = {
     
         window.addEventListener('touchend', (event) => {
             
-            if (isPullingDown && endY - startY > 100) {
+            if (isPullingDown && endY - startY > 150) {
                 console.log('pull down');
                 weatherApp.refresh();
             }
