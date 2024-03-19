@@ -38,6 +38,39 @@ var Main = {
             section.style.display = 'flex';
         }
     },
+
+    pullToRefresh: function () {
+        document.body.addEventListener('touchstart', Main.handleTouchStart.bind(this), false);
+        document.body.addEventListener('touchmove', Main.handleTouchMove.bind(this), false);
+        Main.xDown = null;
+        Main.yDown = null;
+
+    },
+
+    handleTouchStart: function (evt) {
+        Main.xDown = evt.touches[0].clientX;
+        Main.yDown = evt.touches[0].clientY;
+    },
+
+    handleTouchMove: function (evt) {
+        if (!Main.xDown || !Main.yDown) {
+            return;
+        }
+
+        var xUp = evt.touches[0].clientX;
+        var yUp = evt.touches[0].clientY;
+
+        var xDiff = Main.xDown - xUp;
+        var yDiff = Main.yDown - yUp;
+        if ( Math.abs( xDiff ) < Math.abs( yDiff ) && yDiff < 0 ) {
+            /* reset values */
+            Main.xDown = null;
+            Main.yDown = null;
+            // Refresh the weather data
+            Main.weatherApp.refreshWeatherData();
+        }  
+    },
+
     /**
        * Registrerar service worker.
        */

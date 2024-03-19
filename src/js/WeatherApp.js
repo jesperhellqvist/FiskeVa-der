@@ -83,4 +83,11 @@ class WeatherApp {
             this.weatherContainer.updateCity('Hittar ingen plats');
         });
     }
+
+    refresh() {
+        this.loadingSreen.style.display = 'flex';
+        this.currentWeatherContainer.style.display = 'none';
+        this.getUserPosition();
+    }
 }
+
