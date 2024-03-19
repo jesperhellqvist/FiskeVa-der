@@ -40,8 +40,8 @@ var Main = {
     },
 
     pullToRefresh: function () {
-        window.addEventListener('touchstart', Main.handleTouchStart.bind(this), false);
-        window.addEventListener('touchmove', Main.handleTouchMove.bind(this), false);
+        document.body.addEventListener('touchstart', Main.handleTouchStart.bind(this), false);
+        document.body.addEventListener('touchmove', Main.handleTouchMove.bind(this), false);
         Main.xDown = null;
         Main.yDown = null;
 
