@@ -87,6 +87,7 @@ class WeatherApp {
     refresh() {
         this.loadingSreen.style.display = 'flex';
         this.currentWeatherContainer.style.display = 'none';
+        this.hourlyWeatherContainer.style.display = 'none';
         this.getUserPosition();
     }
 }
