@@ -9,6 +9,7 @@ var Main = {
         var weatherApp = new WeatherApp();
         Main.handleNavigation();
         Main.registerServiceWorker();
+        Main.pullToRefresh();
 
     },
     /**
