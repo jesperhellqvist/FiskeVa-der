@@ -13,10 +13,6 @@ class HourlyWeather {
         this.headerDiv = document.createElement('div');
         this.hourlyWeatherContainer = document.createElement('div');
         this.videoElement = document.createElement('video');
-        this.videoElement.autoplay = true;
-        this.videoElement.loop = true;
-        this.videoElement.muted = true;
-        this.videoElement.className = 'weather-img';
         this.addElements(weatherAppContainer);
         this.createHourlyWeather();
     }
@@ -36,6 +32,11 @@ class HourlyWeather {
         this.hourlyWeather.appendChild(this.headerDiv);
         this.headerDiv.innerHTML = '<p class="time-header">Tid</p><p class="weather-header">Väder</p><p class="temp-header">C°</p><p class="hPa-header">hPa</p><p class="wind-header">m/s</p> <p class="wind-header">&#129517</p>';
         this.hourlyWeatherContainer.className = 'hour-weather-container';
+        this.videoElement.autoplay = true;
+        this.videoElement.loop = true;
+        this.videoElement.muted = true;
+        this.videoElement.playsInline = true;
+        this.videoElement.className = 'video-element';
         this.hourlyWeather.appendChild(this.hourlyWeatherContainer);
     }
 

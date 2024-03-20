@@ -36,6 +36,7 @@ class WeatherContainer {
         this.videoElement.autoplay = true;
         this.videoElement.loop = true;
         this.videoElement.muted = true;
+        this.videoElement.playsInline = true;
         this.videoElement.className = 'video-element';
     }
     /**
