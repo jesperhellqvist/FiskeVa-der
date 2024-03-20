@@ -186,7 +186,7 @@ class HourlyWeather {
  * */
     setBackGround(weatherCode) {
 
-
+console.log(weatherCode);
         switch (weatherCode) {
 
             case 0:
