@@ -84,20 +84,23 @@ class WeatherContainer {
                 break;
 
             case 53:
-                this.weatherImg.src = '';
+                
                 this.videoElement.src = './src/js/weather/lightrain.mp4';
+                this.videoElement.style.zIndex = '0';
                 this.weatherDescription.innerHTML = 'Lätt regn';
             case 63:
             case 81:
-                this.weatherImg.src = '';
+              
                 this.videoElement.src = './src/js/weather/lightrain.mp4';
+                this.videoElement.style.zIndex = '0';
                 this.weatherDescription.innerHTML = 'Lätt regn';
                 break;
             case 55:
             case 65:
             case 82:
-                this.weatherImg.src = '';
+                
                 this.videoElement.src = './src/js/weather/heavyrain.mp4';
+                this.videoElement.style.zIndex = '0';
                 this.weatherDescription.innerHTML = 'Kraftigt regn';
                 break;
 
@@ -107,7 +110,7 @@ class WeatherContainer {
             case 77:
             case 85:
             case 86:
-                this.weatherImg.src = '';
+                
                 this.videoElement.src = './src/js/weather/snow.mp4';
                 this.weatherDescription.innerHTML = 'Snö';
                 break;
