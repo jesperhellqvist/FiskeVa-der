@@ -15,10 +15,7 @@ class WeatherContainer {
         this.weatherDescription = document.createElement('p');
         this.weatherImg = document.createElement('img');
         this.videoElement = document.createElement('video');
-        this.videoElement.autoplay = true;
-        this.videoElement.loop = true;
-        this.videoElement.muted = true;
-        this.videoElement.className = 'weather-img';
+       
 
         this.addElements(weatherAppContainer);
     }
@@ -36,6 +33,10 @@ class WeatherContainer {
         this.weatherImg.className = 'weather-img';
         this.weatherContainer.appendChild(this.weatherImg);
         this.weatherContainer.appendChild(this.videoElement);
+        this.videoElement.autoplay = true;
+        this.videoElement.loop = true;
+        this.videoElement.muted = true;
+        this.videoElement.className = 'video-element';
     }
  /**
    * Skippar vidare uppdatering till temp och wind container.
@@ -86,13 +87,11 @@ class WeatherContainer {
             case 53:
                 
                 this.videoElement.src = './src/js/weather/lightrain.mp4';
-                this.videoElement.style.zIndex = '0';
                 this.weatherDescription.innerHTML = 'Lätt regn';
             case 63:
             case 81:
               
                 this.videoElement.src = './src/js/weather/lightrain.mp4';
-                this.videoElement.style.zIndex = '0';
                 this.weatherDescription.innerHTML = 'Lätt regn';
                 break;
             case 55:
@@ -100,7 +99,6 @@ class WeatherContainer {
             case 82:
                 
                 this.videoElement.src = './src/js/weather/heavyrain.mp4';
-                this.videoElement.style.zIndex = '0';
                 this.weatherDescription.innerHTML = 'Kraftigt regn';
                 break;
 
