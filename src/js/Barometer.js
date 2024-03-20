@@ -41,6 +41,7 @@ class Barometer {
     update(hPa) {
 
         hPa = Math.floor(hPa);
+        console.log(hPa);
         this.pElement.innerHTML = "Barometer <br>" + hPa + ' hPa';
         if (hPa < 1013) {
             this.airPreElement.innerHTML = "Lågtryck fisken är inaktiv";

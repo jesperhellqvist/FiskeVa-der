@@ -203,6 +203,7 @@ class HourlyWeather {
                 break;
 
             case 53:
+            case 51:
                 this.weatherImg.src = '';
                 this.videoElement.src = './src/js/weather/lightrain.mp4';
             case 63:

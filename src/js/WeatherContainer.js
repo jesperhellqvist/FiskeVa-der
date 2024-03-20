@@ -3,10 +3,10 @@
  */
 
 class WeatherContainer {
-     /**
-   * Skapar en weather container.
-   * @param {HTMLElement} weatherAppContainer - Behållaren för weather app.
-   */
+    /**
+  * Skapar en weather container.
+  * @param {HTMLElement} weatherAppContainer - Behållaren för weather app.
+  */
     constructor(weatherAppContainer) {
         this.weatherContainer = document.createElement('div');
         this.tempContainer = new TempContainer(this.weatherContainer);
@@ -15,7 +15,7 @@ class WeatherContainer {
         this.weatherDescription = document.createElement('p');
         this.weatherImg = document.createElement('img');
         this.videoElement = document.createElement('video');
-       
+
 
         this.addElements(weatherAppContainer);
     }
@@ -24,7 +24,7 @@ class WeatherContainer {
      * @param {HTMLElement} weatherAppContainer - Behållaren för weather app.
      * @returns {undefined} - Inget returvärde.
      *  */
-    
+
     addElements(weatherAppContainer) {
         this.weatherContainer.id = 'weather-container';
         weatherAppContainer.appendChild(this.weatherContainer);
@@ -38,32 +38,33 @@ class WeatherContainer {
         this.videoElement.muted = true;
         this.videoElement.className = 'video-element';
     }
- /**
-   * Skippar vidare uppdatering till temp och wind container.
-   * @param {number} temp - Ny temperatur.
-   * @param {number} wind -  Ny vindhastighet.
-   * @param {number} windDirection - Ny vindriktning.
-   * @returns {undefined} - Inget returvärde.
-   */
+    /**
+      * Skippar vidare uppdatering till temp och wind container.
+      * @param {number} temp - Ny temperatur.
+      * @param {number} wind -  Ny vindhastighet.
+      * @param {number} windDirection - Ny vindriktning.
+      * @returns {undefined} - Inget returvärde.
+      */
     update(temp, wind, windDirection) {
         this.tempContainer.update(temp);
         this.windContainer.update(wind, windDirection);
     }
-   /**
-   * Skickar vidare uppdatering till user position container.
-   * @param {string} city - Ny stad.
-   * @returns {undefined} - Inget returvärde.
-   */
+    /**
+    * Skickar vidare uppdatering till user position container.
+    * @param {string} city - Ny stad.
+    * @returns {undefined} - Inget returvärde.
+    */
     updateCity(city) {
         this.userPosition.update(city);
     }
- /**
-   * Sätter bakgrundsbild och beskrivning beroende på väderkod.
-   * @param {number} weatherCode - Väderkod.
-   * @returns {undefined} - Inget returvärde.
-   */
+    /**
+      * Sätter bakgrundsbild och beskrivning beroende på väderkod.
+      * @param {number} weatherCode - Väderkod.
+      * @returns {undefined} - Inget returvärde.
+      */
     setBackGround(weatherCode) {
 
+        console.log(weatherCode);
         switch (weatherCode) {
 
             case 0:
@@ -85,19 +86,20 @@ class WeatherContainer {
                 break;
 
             case 53:
-                
+            case 51:
+
                 this.videoElement.src = './src/js/weather/lightrain.mp4';
                 this.weatherDescription.innerHTML = 'Lätt regn';
             case 63:
             case 81:
-              
+
                 this.videoElement.src = './src/js/weather/lightrain.mp4';
                 this.weatherDescription.innerHTML = 'Lätt regn';
                 break;
             case 55:
             case 65:
             case 82:
-                
+
                 this.videoElement.src = './src/js/weather/heavyrain.mp4';
                 this.weatherDescription.innerHTML = 'Kraftigt regn';
                 break;
@@ -108,7 +110,7 @@ class WeatherContainer {
             case 77:
             case 85:
             case 86:
-                
+
                 this.videoElement.src = './src/js/weather/snow.mp4';
                 this.weatherDescription.innerHTML = 'Snö';
                 break;
